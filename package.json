@@ -44,6 +44,6 @@
     "lint:watch": "watch 'npm run lint'",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "mock-server": "json-server --watch ./src/db.json --port 3004"
+    "mock-api": "json-server ./src/db.json"
   }
 }
