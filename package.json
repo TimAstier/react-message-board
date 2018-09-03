@@ -27,7 +27,12 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "@storybook/react": "^3.4.10",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/addon-centered": "^3.4.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,6 +40,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
-    "lint:watch": "watch 'npm run lint'"
+    "lint:watch": "watch 'npm run lint'",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   }
 }

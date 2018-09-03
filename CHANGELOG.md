@@ -24,4 +24,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Initiated project with create-react-app
 - Added content for CHANGELOG, README, LICENSE files
 - Set up Storybook
-- Set up ESLint with Storytel config
+- Set up ESLint
