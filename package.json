@@ -1,18 +1,40 @@
 {
   "name": "react-message-board",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "description": "Frontend Coding Challenge - Design and build a webpage to work as a message board",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimAstier/react-message-board"
+  },
+  "author": "Timothée Astier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimAstier/react-message-board/issues"
+  },
+  "homepage": "https://github.com/TimAstier/react-message-board#readme",
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^7.2.3",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "react-scripts": "1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js",
+    "lint:watch": "watch 'npm run lint'"
   }
 }
