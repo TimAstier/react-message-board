@@ -27,6 +27,14 @@ $ npm start
 
 Then navigate to *http://localhost:3000/*
 
+## Run the mock server
+
+```
+npm run mock-server
+```
+
+The mock server should be running on *http://localhost:3004*
+
 ## Build
 
 This command creates an optimized production build in a */build* folder:

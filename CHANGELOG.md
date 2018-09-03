@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Initiated project with create-react-app
-- Added content for CHANGELOG, README, LICENSE files
-- Set up Storybook
-- Set up ESLint
+- Content for CHANGELOG, README, LICENSE files
+- Storybook
+- ESLint
+- Mock server with json-server
