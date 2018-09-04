@@ -1,0 +1,87 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Message } from '../../models';
+import Board from './Board';
+import _ from 'lodash';
+
+// TODO: DRY these test data
+
+const messageA = new Message({
+  id: 1,
+  text: 'Who wants "pain au chocolat" for breakfast?',
+  author: 1,
+  parentId: null
+});
+
+const messageB = new Message({
+  id: 2,
+  text: 'Me please!',
+  author: 2,
+  parentId: 1
+});
+
+const messageC = new Message({
+  id: 3,
+  text: 'OK, will bring some tomorrow.',
+  author: 1,
+  parentId: 1
+});
+
+const messageD = new Message({
+  id: 4,
+  text: 'I don\'t like pains au chocolat.',
+  author: 3,
+  parentId: null
+});
+
+const messageE = new Message({
+  id: 5,
+  text: 'Me neither...',
+  author: 4,
+  parentId: 4
+});
+
+const manyMessages = [];
+
+_.times(15, (i) => {
+  manyMessages.push(
+    new Message({
+      id: i + 2,
+      text: 'Me please!',
+      author: i + 2,
+      parentId: 1
+    })
+  );
+});
+
+storiesOf('Board', module)
+  .add('empty', () =>
+    <Board
+      threads={[]}
+      currentUserId={1}
+    />
+  )
+  .add('with one thread', () =>
+    <Board
+      threads={[[messageA, messageB, messageC]]}
+      currentUserId={1}
+    />
+  )
+  .add('with two threads', () =>
+    <Board
+      threads={[[messageA, messageB, messageC], [messageD, messageE]]}
+      currentUserId={1}
+    />
+  )
+  .add('with one long thread', () =>
+    <Board
+      threads={[[messageA, ...manyMessages]]}
+      currentUserId={1}
+    />
+  )
+  .add('with many threads', () =>
+    <Board
+      threads={[[messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages]]}
+      currentUserId={1}
+    />
+  );

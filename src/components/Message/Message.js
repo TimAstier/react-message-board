@@ -7,8 +7,8 @@ const Wrapper = styled.div`
   min-height: 100px;
   background-color: ${props => props.isChild ? '#f1fab3' : '#d5f013'};
   display: flex;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 `;
 
 const LeftSidebar = styled.div`
@@ -47,9 +47,12 @@ const Message = ({ text, belongsToCurrentUser, isChild }) => {
   return (
     <Wrapper isChild={isChild}>
       <LeftSidebar>
-        <MessageButton>
-          &#8618;
-        </MessageButton>
+        {
+          !isChild &&
+          <MessageButton>
+            &#8618;
+          </MessageButton>
+        }
       </LeftSidebar>
       <Text>
         {text}

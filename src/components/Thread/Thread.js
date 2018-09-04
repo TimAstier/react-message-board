@@ -6,8 +6,10 @@ import { Message } from '../.';
 
 const Wrapper = styled.div`
   max-height: 400px;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: scroll;
 `;
 
