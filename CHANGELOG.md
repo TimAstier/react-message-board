@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Load stories dynamically
+- Add lodash and immutable
+- First implementation of <Message />
+- First implementation of <Thread />
 
 ## [0.0.1] 2018-09-03
 

@@ -30,10 +30,10 @@ storiesOf('Message', module)
       belongsToCurrentUser
     />
   )
-  .add('isChildMessage', () =>
+  .add('isChild', () =>
     <Message
       text="Hello world!"
-      isChildMessage
+      isChild
     />
   )
   ;

@@ -5,8 +5,10 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 250px;
   min-height: 100px;
-  background-color: ${props => props.isChildMessage ? '#f1fab3' : '#d5f013'};
+  background-color: ${props => props.isChild ? '#f1fab3' : '#d5f013'};
   display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 const LeftSidebar = styled.div`
@@ -41,9 +43,9 @@ const MessageButton = styled.div`
   cursor: pointer;
 `;
 
-const Message = ({ text, belongsToCurrentUser, isChildMessage }) => {
+const Message = ({ text, belongsToCurrentUser, isChild }) => {
   return (
-    <Wrapper isChildMessage={isChildMessage}>
+    <Wrapper isChild={isChild}>
       <LeftSidebar>
         <MessageButton>
           &#8618;
@@ -72,15 +74,12 @@ const Message = ({ text, belongsToCurrentUser, isChildMessage }) => {
 };
 
 Message.propTypes = {
-  // id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
-  respond: PropTypes.func.isRequired,
+  isChild: PropTypes.bool,
   belongsToCurrentUser: PropTypes.bool,
-  delete: PropTypes.func,
-  edit: PropTypes.func,
-  isChildMessage: PropTypes.bool
-  // parentId: PropTypes.number,
-  // authorId: PropTypes.number.isRequired,
+  respond: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
 };
 
 export default Message;
