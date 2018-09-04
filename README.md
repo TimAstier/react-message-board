@@ -33,7 +33,8 @@ $ npm start
 
 ## Running the mock api
 
-This prototype app has been developed with a mock api powered by [json-server](https://github.com/typicode/json-server). You need to run the mock api in parallel with the app in order to get some data.
+This prototype app has been developed with a mock api powered by [json-server](https://github.com/typicode/json-server).  
+You need to run the mock api in parallel with the app in order to get some data.
 
 ```sh
 # Run the mock api

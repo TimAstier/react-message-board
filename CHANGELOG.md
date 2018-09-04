@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 ---
 
+## [0.0.11] 2018-09-04
+
+### Added
+- Load stories dynamically
+
 ## [0.0.1] 2018-09-03
 
 ### Added
