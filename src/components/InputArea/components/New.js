@@ -2,9 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button } from '../../../containers';
-import { Message, TextArea } from '../../.';
-import { MAX_MESSAGE_LENGTH } from '../../../constants';
+import { Button, TextArea } from '../../../containers';
+import { Message } from '../../.';
 
 const SubWrapper = styled.div`
   margin-bottom: 20px;
@@ -23,20 +22,13 @@ const LabelWrapper = styled.div`
   align-items: center;
 `;
 
-const Initial = props => {
+const Initial = ({charactersCountLabel}) => {
   return (
     <Fragment>
-      <LabelWrapper>
-        {`${MAX_MESSAGE_LENGTH - props.remainingCharacters}
-        / ${MAX_MESSAGE_LENGTH}`}
-      </LabelWrapper>
+      <LabelWrapper>{charactersCountLabel}</LabelWrapper>
       <SubWrapper>
         <Message noIcons>
-          <TextArea
-            value={props.text}
-            handleChange={props.handleInputChange}
-            noBorder
-          />
+          <TextArea noBorder />
         </Message>
       </SubWrapper>
       <ButtonsWrapper>
@@ -48,9 +40,7 @@ const Initial = props => {
 };
 
 Initial.propTypes = {
-  text: PropTypes.string.isRequired,
-  handleInputChange: PropTypes.func,
-  remainingCharacters: PropTypes.number.isRequired
+  charactersCountLabel: PropTypes.string.isRequired
 };
 
 export default Initial;

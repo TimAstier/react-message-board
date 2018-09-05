@@ -3,15 +3,22 @@ import { storiesOf } from '@storybook/react';
 import Button from './Button';
 
 storiesOf('Button', module)
-  .add('label: test', () =>
-    <Button label="Test" />
-  )
-  .add('secondary', () =>
-    <Button label="Test" secondary />
+  .add('short label', () =>
+    <Button
+      label="Test"
+      handleClick={() => console.log('clicked!')}
+    />
   )
   .add('longer label', () =>
-    <Button label="New message" />
+    <Button
+      label="New message"
+      handleClick={() => console.log('clicked!')}
+    />
   )
-  .add('handleClick', () =>
-    <Button label="Click me" handleClick={() => console.log('clicked!')} />
+  .add('secondary: true', () =>
+    <Button
+      label="Test"
+      secondary
+      handleClick={() => console.log('clicked!')}
+    />
   );

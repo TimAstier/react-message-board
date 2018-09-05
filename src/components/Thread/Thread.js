@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+const OriginalMessageWrapper = styled.div`
+  flex-grow: 1;
+`;
+
 const ChildMessagesWrapper = styled.div`
   margin-top: 10px;
   display: flex;
@@ -42,11 +46,13 @@ class Thread extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Message
-          text={this.props.originalMessage.text}
-          belongsToCurrentUser={this.props.originalMessage.author === this.props.currentUserId}
-          isChild={false}
-        />
+        <OriginalMessageWrapper>
+          <Message
+            text={this.props.originalMessage.text}
+            belongsToCurrentUser={this.props.originalMessage.author === this.props.currentUserId}
+            isChild={false}
+          />
+        </OriginalMessageWrapper>
         <ChildMessagesWrapper>
           {this.renderChildMessages()}
         </ChildMessagesWrapper>

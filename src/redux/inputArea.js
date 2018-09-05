@@ -51,13 +51,19 @@ export const actions = {
 const getStatus = state => state.get('status');
 const getText = state => state.get('text');
 
-const getRemainingCharacters = createSelector(
+const getRemainingCharactersCount = createSelector(
   getText,
   text => MAX_MESSAGE_LENGTH - text.length
+);
+
+const getCharactersCountLabel = createSelector(
+  getRemainingCharactersCount,
+  count => `${MAX_MESSAGE_LENGTH - count} / ${MAX_MESSAGE_LENGTH}`
 );
 
 export const selectors = {
   getStatus,
   getText,
-  getRemainingCharacters
+  getRemainingCharactersCount,
+  getCharactersCountLabel
 };

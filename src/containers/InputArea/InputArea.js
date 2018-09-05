@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { InputArea as InputAreaComponent } from '../../components';
-import { actions as inputAreaActions } from '../../redux/inputArea';
 import s from '../../rootSelectors';
 
 class InputArea extends React.Component {
@@ -20,9 +19,7 @@ class InputArea extends React.Component {
     return (
       <InputAreaComponent
         status={this.props.status}
-        text={this.props.text}
-        handleInputChange={this.handleInputChange}
-        remainingCharacters={this.props.remainingCharacters}
+        charactersCountLabel={this.props.charactersCountLabel}
       />
     );
   }
@@ -35,20 +32,14 @@ InputArea.propTypes = {
     'edit',
     'saving'
   ]).isRequired,
-  text: PropTypes.string,
-  setText: PropTypes.func.isRequired,
-  remainingCharacters: PropTypes.number.isRequired,
+  charactersCountLabel: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   status: s.inputArea.getStatus(state),
-  text: s.inputArea.getText(state),
-  remainingCharacters: s.inputArea.getRemainingCharacters(state),
+  charactersCountLabel: s.inputArea.getCharactersCountLabel(state),
 });
 
 export default connect(
   mapStateToProps,
-  {
-    setText: inputAreaActions.setText,
-  }
 )(InputArea);

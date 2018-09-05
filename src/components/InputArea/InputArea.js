@@ -15,26 +15,16 @@ class InputArea extends React.Component {
 
   renderChildComponent() {
     switch(this.props.status) {
-      case 'initial':
-        return (
-          <ChildComponents.Initial
-            handleButtonClick={this.props.handleButtonClick}
-          />
-        );
+      case 'initial': return <ChildComponents.Initial />;
       case 'new':
         return (
           <ChildComponents.New
-            text={this.props.text}
-            handleInputChange={this.props.handleInputChange}
-            remainingCharacters={this.props.remainingCharacters}
+            charactersCountLabel={this.props.charactersCountLabel}
           />
         );
       case 'edit':
         return (
-          <ChildComponents.Edit
-            text={this.props.text}
-            handleInputChange={this.props.handleInputChange}
-          />
+          <ChildComponents.Edit />
         );
       case 'saving': return <ChildComponents.Saving />;
       default: return null;
@@ -57,9 +47,7 @@ InputArea.propTypes = {
     'edit',
     'saving'
   ]).isRequired,
-  text: PropTypes.string,
-  handleInputChange: PropTypes.func,
-  remainingCharacters: PropTypes.number.isRequired,
+  charactersCountLabel: PropTypes.string.isRequired,
 };
 
 export default InputArea;
