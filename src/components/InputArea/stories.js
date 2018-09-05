@@ -13,6 +13,7 @@ storiesOf('InputArea', module)
     <InputArea
       status="new"
       text="This is my first message!"
+      remainingCharacters={20}
     />
   )
   .add('status: edit', () =>

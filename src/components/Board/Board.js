@@ -5,14 +5,13 @@ import { Thread } from '../.';
 import { Message as MessageModel } from '../../models';
 
 const Wrapper = styled.div`
-  background-color: black;
-  min-height: 450px;
-  width: 1000px;
+  box-sizing: border-box;
+  background-color: #2b2b2b;
+  height: 450px;
+  width: 100%;
   overflow-x: scroll;
   display: flex;
   align-items: center;
-  border: 20px solid brown;
-  border-radius: 15px;
 `;
 
 const ThreadWrapper = styled.div`
@@ -27,8 +26,12 @@ class Board extends React.Component {
       ? threads.map((t, i) => {
         return (
           <ThreadWrapper key={i}>
-            <Thread messages={t} currentUserId={currentUserId}/>
-          </ThreadWrapper>
+            <Thread
+              currentUserId={currentUserId}
+              originalMessage={t[0]}
+              childMessages={Array.slice(t, 1)}
+            />
+            </ThreadWrapper>
         );
       })
       : null;

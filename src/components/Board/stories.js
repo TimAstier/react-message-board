@@ -42,6 +42,7 @@ const messageE = new Message({
 });
 
 const manyMessages = [];
+const manyThreads = [];
 
 _.times(15, (i) => {
   manyMessages.push(
@@ -52,6 +53,10 @@ _.times(15, (i) => {
       parentId: 1
     })
   );
+});
+
+_.times(8, (i) => {
+  manyThreads.push([messageA, ...manyMessages]);
 });
 
 storiesOf('Board', module)
@@ -81,7 +86,7 @@ storiesOf('Board', module)
   )
   .add('with many threads', () =>
     <Board
-      threads={[[messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages], [messageA, ...manyMessages]]}
+      threads={manyThreads}
       currentUserId={1}
     />
   );
