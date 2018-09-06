@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button, TextArea } from '../../../containers';
-import { Message } from '../../.';
+import { Button, Message, TextArea } from '../../.';
 
 const SubWrapper = styled.div`
   margin-bottom: 20px;
@@ -22,25 +21,42 @@ const LabelWrapper = styled.div`
   align-items: center;
 `;
 
-const Initial = ({charactersCountLabel}) => {
+// TODO: auto focus input
+
+const Initial = props => {
   return (
     <Fragment>
-      <LabelWrapper>{charactersCountLabel}</LabelWrapper>
+      <LabelWrapper>{props.charactersCountLabel}</LabelWrapper>
       <SubWrapper>
         <Message noIcons>
-          <TextArea noBorder />
+          <TextArea
+            value={props.text}
+            noBorder
+            handleChange={props.handleTextareaChange}
+          />
         </Message>
       </SubWrapper>
       <ButtonsWrapper>
-        <Button type="cancel" label="Cancel" secondary />
-        <Button type="saveNew" label="Save" />
+        <Button
+          label="Cancel"
+          secondary
+          handleClick={props.handleCancelClick}
+        />
+        <Button
+          label="Save"
+          handleClick={props.handleSaveClick}
+        />
       </ButtonsWrapper>
     </Fragment>
   );
 };
 
 Initial.propTypes = {
-  charactersCountLabel: PropTypes.string.isRequired
+  charactersCountLabel: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  handleSaveClick: PropTypes.func.isRequired,
+  handleCancelClick: PropTypes.func.isRequired,
+  handleTextareaChange: PropTypes.func.isRequired,
 };
 
 export default Initial;

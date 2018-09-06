@@ -60,6 +60,11 @@ _.times(8, (i) => {
 });
 
 storiesOf('Board', module)
+  .add('loading', () =>
+    <Board
+      loading
+    />
+  )
   .add('empty', () =>
     <Board
       threads={[]}

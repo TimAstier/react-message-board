@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-
 *Version Template below*
 
 ---
@@ -17,6 +16,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 ### Security
 ---
+
+## [0.0.12] 2018-09-06
+
+### Added
+- Load messages
+- Possibility to create and save a new message
+- Spinners and loading status
 
 ## [0.0.11] 2018-09-04
 

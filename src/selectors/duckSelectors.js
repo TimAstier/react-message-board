@@ -2,12 +2,18 @@
 // This avoids having to change components if selectors implementation is changed
 // See https://egghead.io/lessons/javascript-redux-colocating-selectors-with-reducers
 
-import bindSelectors from '../utils/bindSelectors';
+import bindSelectors from '../helpers/bindSelectors';
 
 //TODO: DRY this
 
+import * as fromApp from '../redux/app';
 import * as fromMessages from '../redux/messages';
 import * as fromInputArea from '../redux/inputArea';
+
+const appSelectors = bindSelectors(
+  state => state.get('app'),
+  fromApp.selectors
+);
 
 const inputAreaSelectors = bindSelectors(
   state => state.get('inputArea'),
@@ -20,6 +26,7 @@ const messagesSelectors = bindSelectors(
 );
 
 const duckSelectors = {
+  app: appSelectors,
   inputArea: inputAreaSelectors,
   messages: messagesSelectors,
 };

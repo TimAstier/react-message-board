@@ -75,4 +75,11 @@ storiesOf('Message', module)
     <Message>
       <TextArea noBorder/>
     </Message>
-  );
+  )
+  .add('opacity: 0.1', () =>
+    <Message
+      text="Hello world!"
+      opacity={0.1}
+    />
+  )
+  ;

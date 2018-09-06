@@ -8,11 +8,11 @@ This is a coding exercise to practice front-end development.
 
 ## Features
 
-- [ ] a client can create a message in the service
+- [x] a client can create a message in the service
 - [ ] a client can create a child-message in the service
 - [ ] the same client can modify their message
 - [ ] the same client can delete their message
-- [ ] a client can view any message available
+- [x] a client can view any message available
 - [ ] add test to critical places of the code (OPTIONAL)
 
 ## Running the app
@@ -139,6 +139,10 @@ $ npm run lint:watch
 - [styled-components](https://www.styled-components.com/) - a convenient way to style components with CSS
 - [storybook](https://storybook.js.org/) - an UI development environment  
 - [json-server](https://github.com/typicode/json-server)
+
+## Copyrights
+
+svg file for spinners from [loading.io](loading.io) (licence: CC0)
 
 ## License
 

@@ -2,7 +2,7 @@
   "messages": [
     {
       "id": 1,
-      "message": "This is our new message board! I'm so excited.",
+      "text": "This is our new message board! I'm so excited.",
       "autorId": 1,
       "parentId": null
     }

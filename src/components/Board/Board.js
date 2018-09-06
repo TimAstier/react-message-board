@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Thread } from '../.';
+import { Thread, Spinner } from '../.';
 import { Message as MessageModel } from '../../models';
 
 const Wrapper = styled.div`
@@ -16,6 +16,12 @@ const Wrapper = styled.div`
 
 const ThreadWrapper = styled.div`
   height: 400px;
+`;
+
+const SpinnerWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 class Board extends React.Component {
@@ -41,7 +47,10 @@ class Board extends React.Component {
   render() {
     return(
       <Wrapper>
-        {this.renderThreads()}
+        { !this.props.loading
+          ? this.renderThreads()
+          : <SpinnerWrapper><Spinner size={145}/></SpinnerWrapper>
+        }
       </Wrapper>
     );
   }
@@ -52,6 +61,7 @@ Board.propTypes = {
     PropTypes.arrayOf(PropTypes.instanceOf(MessageModel)),
   ),
   currentUserId: PropTypes.number,
+  loading: PropTypes.bool,
 };
 
 export default Board;

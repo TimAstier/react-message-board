@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import { MAX_MESSAGE_LENGTH } from '../constants';
 import { createSelector } from 'reselect';
+import { types as messagesTypes } from './messages';
 
 // Types
 
@@ -25,6 +26,10 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         return state.set('text', action.payload.text);
       }
       return state;
+    case messagesTypes.SAVE:
+      return state.set('status', 'saving');
+    case messagesTypes.SAVE_SUCCEEDED:
+      return state.merge({status: 'initial', text: ''});
     default: return state;
   }
 }

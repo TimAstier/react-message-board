@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   background-color: ${props => props.isChild ? '#f1fab3' : '#d5f013'};
   display: flex;
   border-radius: 10px;
+  opacity: ${props => props.opacity};
 `;
 
 const Sidebar = styled.div`
@@ -57,9 +58,9 @@ class Message extends React.Component{
   }
   
   render() {
-    const { belongsToCurrentUser, isChild, noIcons } = this.props;
+    const { belongsToCurrentUser, isChild, noIcons, opacity } = this.props;
     return (
-      <Wrapper isChild={isChild}>
+      <Wrapper isChild={isChild} opacity={opacity}>
         <LeftSidebar>
           { !noIcons && !isChild && <MessageButton icon="hookedArrow" /> }
         </LeftSidebar>
@@ -86,7 +87,12 @@ Message.propTypes = {
   respond: PropTypes.func.isRequired,
   delete: PropTypes.func.isRequired,
   edit: PropTypes.func.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
+  opacity: PropTypes.number,
+};
+
+Message.defaultProps = {
+  opacity: 1
 };
 
 export default Message;

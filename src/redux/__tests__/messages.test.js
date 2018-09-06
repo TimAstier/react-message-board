@@ -30,6 +30,17 @@ describe('messages duck', () => {
 
     });
     
+    it('adds a message on a SAVE_SUCCEEDED', () => {
+      const receivedData = {
+        text: 'Great message',
+        parentId: null,
+        id: 4
+      };
+      const action = actions.saveSucceeded(receivedData);
+      const expectedState = List([new Message(receivedData)]);
+      expect(reducer(INITIAL_STATE, action)).toEqual(expectedState);
+    });
+    
     describe('REMOVE action', () => {
       
       it('removes a message', () => {
