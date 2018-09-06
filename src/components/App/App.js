@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Board } from '../.';
-import { InputArea } from '../../containers';
+import { Board, InputArea } from '../../containers';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,15 +9,13 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <Board />
-        <InputArea />
-      </Wrapper>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Wrapper>
+      <Board />
+      <InputArea />
+    </Wrapper>
+  );
+};
 
 export default App;

@@ -15,4 +15,11 @@ storiesOf('TextArea', module)
       value={'#'.repeat(240)}
       handleChange={() => console.log('change!')}
     />
+  )
+  .add('noBorder', () => 
+    <TextArea
+      value="This TextArea has no border."
+      handleChange={() => console.log('change!')}
+      noBorder
+    />
   );

@@ -6,14 +6,14 @@ import { createSelector } from 'reselect';
 
 export const types = {
   SET_STATUS: 'userInput/SET_STATUS',
-  SET_TEXT: 'userInput/SET_TEXT'
+  SET_TEXT: 'userInput/SET_TEXT',
 };
 
 // Reducer
 
 export const INITIAL_STATE = Map({
   text: '',
-  status: 'initial'
+  status: 'initial',
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -43,7 +43,7 @@ const setText = text => ({
 
 export const actions = {
   setStatus,
-  setText
+  setText,
 };
 
 // Selectors
@@ -65,5 +65,5 @@ export const selectors = {
   getStatus,
   getText,
   getRemainingCharactersCount,
-  getCharactersCountLabel
+  getCharactersCountLabel,
 };

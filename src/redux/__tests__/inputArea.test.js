@@ -1,13 +1,13 @@
 import reducer, { INITIAL_STATE, actions, selectors } from '../inputArea';
 import { MAX_MESSAGE_LENGTH } from '../../constants'; 
 
-describe('inputArea reducer', () => {
+describe('inputArea duck', () => {
 
   it('returns the initial state', () => {
     expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
   });
   
-  describe('SET_TEXT', () => {
+  describe('SET_TEXT action', () => {
     
     it('updates text', () => {
       const action = actions.setText('Hello!');
