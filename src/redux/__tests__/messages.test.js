@@ -73,10 +73,10 @@ describe('messages duck', () => {
         const messageD = new Message({id: 4});
         const messageE = new Message({id: 5, parentId: 4});
         const state = List([ messageB, messageA, messageC, messageE, messageD ]);
-        const threads = List([
+        const threads = [
           [ messageA, messageB, messageC ],
           [ messageD, messageE ]
-        ]);
+        ];
         expect(selectors.getThreads(state)).toEqual(threads);
       });
       
@@ -85,7 +85,7 @@ describe('messages duck', () => {
         const messageB = new Message({id: 2, parentId: 1});
         const messageC = new Message({id: 3, parentId: 2});
         const state = List([ messageB, messageA, messageC ]);
-        const threads = List([[ messageA, messageB ]]);
+        const threads = [[ messageA, messageB ]];
         expect(selectors.getThreads(state)).toEqual(threads);
       });
     });

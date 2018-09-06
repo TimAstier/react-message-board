@@ -84,7 +84,7 @@ const getThreads = createSelector(
         threads[threadIndexes[m.parentId]].push(m);
       }
     });
-    return List(threads);
+    return threads;
   }
 );
 

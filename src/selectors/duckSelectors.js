@@ -4,6 +4,9 @@
 
 import bindSelectors from '../utils/bindSelectors';
 
+//TODO: DRY this
+
+import * as fromMessages from '../redux/messages';
 import * as fromInputArea from '../redux/inputArea';
 
 const inputAreaSelectors = bindSelectors(
@@ -11,8 +14,14 @@ const inputAreaSelectors = bindSelectors(
   fromInputArea.selectors
 );
 
+const messagesSelectors = bindSelectors(
+  state => state.get('messages'),
+  fromMessages.selectors
+);
+
 const duckSelectors = {
   inputArea: inputAreaSelectors,
+  messages: messagesSelectors,
 };
 
 export default duckSelectors;

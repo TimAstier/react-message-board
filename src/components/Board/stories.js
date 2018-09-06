@@ -66,25 +66,31 @@ storiesOf('Board', module)
       currentUserId={1}
     />
   )
-  .add('with one thread', () =>
+  .add('one thread', () =>
     <Board
       threads={[[messageA, messageB, messageC]]}
       currentUserId={1}
     />
   )
-  .add('with two threads', () =>
+  .add('one thread with no childMessages', () =>
+    <Board
+      threads={[[messageA]]}
+      currentUserId={1}
+    />
+  )
+  .add('two threads', () =>
     <Board
       threads={[[messageA, messageB, messageC], [messageD, messageE]]}
       currentUserId={1}
     />
   )
-  .add('with one long thread', () =>
+  .add('one long thread', () =>
     <Board
       threads={[[messageA, ...manyMessages]]}
       currentUserId={1}
     />
   )
-  .add('with many threads', () =>
+  .add('many threads', () =>
     <Board
       threads={manyThreads}
       currentUserId={1}
