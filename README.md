@@ -6,7 +6,7 @@
 Prototype of a web-based message board built with React and Redux.  
 This is a coding exercise to practice front-end development.
 
-## Features
+## Requirements
 
 - [x] a client can create a message in the service
 - [ ] a client can create a child-message in the service
@@ -134,11 +134,15 @@ $ npm run lint:watch
 
 ## Built with
 - [react](https://reactjs.org/) - a JavaScript library for building user interfaces
-- [redux](https://redux.js.org/) - a predictable state container for JavaScript apps  
+- [redux](https://redux.js.org/) - a predictable state container for JavaScript apps 
+- [redux-saga](https://github.com/redux-saga/redux-saga) - an alternative side effect model for Redux apps 
+- [reselect](https://github.com/reduxjs/reselect) - selector library for Redux
 - [immutable](https://facebook.github.io/immutable-js/) - immutable JavaScript objects
 - [styled-components](https://www.styled-components.com/) - a convenient way to style components with CSS
+- [json-server](https://github.com/typicode/json-server) - a basic way to fake a REST API
+- [axios](https://github.com/axios/axios) - promise based HTTP client for the browser and node.js
 - [storybook](https://storybook.js.org/) - an UI development environment  
-- [json-server](https://github.com/typicode/json-server)
+- [jest](https://jestjs.io/) - zero configuration testing platform for JavaScript
 
 ## Copyrights
 
