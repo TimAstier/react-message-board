@@ -17,7 +17,9 @@ function* fetch() {
 function* save(action) {
   try {
     const { text, parentId, author } = action.payload;
-    const response = yield call(Api.post, '/messages', { text, parentId, author });
+    const response = yield call(
+      Api.post, '/messages', { text, parentId, author }
+    );
     yield put(messagesActions.saveSucceeded(response.data));
   }
   catch(error) {
