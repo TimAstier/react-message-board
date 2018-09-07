@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Board, InputArea } from '../../containers';
+import { Auth, Board, InputArea } from '../../containers';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const App = () => {
   return (
     <Wrapper>
+      <Auth />
       <Board />
       <InputArea />
     </Wrapper>

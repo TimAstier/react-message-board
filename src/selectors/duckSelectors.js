@@ -7,12 +7,18 @@ import bindSelectors from '../helpers/bindSelectors';
 //TODO: DRY this
 
 import * as fromApp from '../redux/app';
+import * as fromAuth from '../redux/auth';
 import * as fromMessages from '../redux/messages';
 import * as fromInputArea from '../redux/inputArea';
 
 const appSelectors = bindSelectors(
   state => state.get('app'),
   fromApp.selectors
+);
+
+const authSelectors = bindSelectors(
+  state => state.get('auth'),
+  fromAuth.selectors
 );
 
 const inputAreaSelectors = bindSelectors(
@@ -27,6 +33,7 @@ const messagesSelectors = bindSelectors(
 
 const duckSelectors = {
   app: appSelectors,
+  auth: authSelectors,
   inputArea: inputAreaSelectors,
   messages: messagesSelectors,
 };

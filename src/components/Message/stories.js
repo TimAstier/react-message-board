@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Provider from '../../helpers/testComponents/Provider';
 import Message from './Message';
 import MessageButton from './MessageButton';
-import { TextArea } from '../../containers';
+import { TextArea } from '../.';
 
 storiesOf('MessageButton', module)
   .add('icon: hookedArrow', () => 

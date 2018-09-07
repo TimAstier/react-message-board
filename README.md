@@ -146,7 +146,8 @@ $ npm run lint:watch
 
 ## Copyrights
 
-svg file for spinners from [loading.io](loading.io) (licence: CC0)
+svg file for spinners from [loading.io](loading.io) (licence: CC0)  
+avatar images from [avatars.adorable.io](http://avatars.adorable.io/)  
 
 ## License
 
