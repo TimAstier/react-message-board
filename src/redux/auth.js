@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { createSelector } from 'reselect';
 
 // Types
 
@@ -34,7 +35,12 @@ export const actions = {
 // Selectors
 
 const getCurrentUserId = state => state.get('currentUserId');
+const getIsLoggedIn = createSelector(
+  getCurrentUserId,
+  id => id !== null
+);
 
 export const selectors = {
   getCurrentUserId,
+  getIsLoggedIn
 };

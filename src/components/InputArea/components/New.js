@@ -45,6 +45,7 @@ const Initial = props => {
         <Button
           label="Save"
           handleClick={props.handleSaveClick}
+          disabled={props.text.length === 0}
         />
       </ButtonsWrapper>
     </Fragment>

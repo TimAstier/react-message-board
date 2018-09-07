@@ -6,8 +6,6 @@ import { Message as MessageModel } from '../../models';
 import s from '../../rootSelectors';
 import { actions as messagesActions } from '../../redux/messages';
 
-// TODO: Dynamic userId
-
 class Board extends React.Component {
   
   componentDidMount() {
@@ -18,7 +16,7 @@ class Board extends React.Component {
     return (
       <BoardComponent
         threads={this.props.threads}
-        currentUserId={1}
+        currentUserId={this.props.currentUserId}
         loading={this.props.loading}
       />
     );
@@ -37,6 +35,7 @@ Board.propTypes = {
 const mapStateToProps = state => ({
   threads: s.messages.getThreads(state),
   loading: s.app.getLoading(state),
+  currentUserId: s.auth.getCurrentUserId(state)
 });
 
 export default connect(

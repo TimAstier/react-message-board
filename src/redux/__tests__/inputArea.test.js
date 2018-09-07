@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import reducer, { INITIAL_STATE, actions, selectors } from '../inputArea';
 import { types as messagesTypes } from '../messages';
+import { types as authTypes } from '../auth';
 import { MAX_MESSAGE_LENGTH } from '../../constants'; 
 
 describe('inputArea duck', () => {
@@ -45,5 +46,12 @@ describe('inputArea duck', () => {
     const action = { type: messagesTypes.SAVE_SUCCEEDED };
     const nextState = reducer(state, action); 
     expect(selectors.getText(nextState)).toEqual('');
+  });
+  
+  it('resets the state on SET_CURRENT_USER_ID', () => {
+    const state = Map({ text: 'whatever', status: 'new' });
+    const action = { type: authTypes.SET_CURRENT_USER_ID };
+    const nextState = reducer(state, action); 
+    expect(nextState).toEqual(INITIAL_STATE);
   });
 });

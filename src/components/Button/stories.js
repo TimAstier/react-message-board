@@ -21,4 +21,11 @@ storiesOf('Button', module)
       secondary
       handleClick={() => console.log('clicked!')}
     />
+  )
+  .add('disabled', () =>
+    <Button
+      label="Test"
+      disabled
+      handleClick={() => console.log('clicked!')}
+    />
   );

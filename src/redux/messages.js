@@ -34,7 +34,7 @@ const reduceUpdate = (state, action) => {
 };
 
 const reduceFetchSucceeded = (state, action) => {
-  return List(action.payload.data);
+  return List(action.payload.data.map(m => new Message(m)));
 };
 
 export default function reducer(state = INITIAL_STATE, action = {}) {

@@ -9,9 +9,19 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  text-align: center;
 `;
 
 class InputArea extends React.Component {
+  
+  renderWelcomeMessage() {
+    return (
+      <div>
+        <h1>Welcome to React Message Board!</h1>
+        <h2>&#8679; Chose an avatar to get started &#8679;</h2>
+      </div>
+    );
+  }
   
   renderInitial() {
     return (
@@ -44,6 +54,9 @@ class InputArea extends React.Component {
   }
   
   renderChildComponent() {
+    if (!this.props.isLoggedIn) {
+      return this.renderWelcomeMessage();
+    }
     switch(this.props.status) {
       case 'initial': return this.renderInitial();
       case 'new': return this.renderNew();
@@ -75,6 +88,7 @@ InputArea.propTypes = {
   handleCancelClick: PropTypes.func.isRequired,
   handleSaveClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default InputArea;

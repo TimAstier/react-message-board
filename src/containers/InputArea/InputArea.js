@@ -8,10 +8,10 @@ import s from '../../rootSelectors';
 
 class InputArea extends React.Component {
 
-  // TODO: include author when saving
   render() {
     return (
       <InputAreaComponent
+        isLoggedIn={this.props.isLoggedIn}
         status={this.props.status}
         charactersCountLabel={this.props.charactersCountLabel}
         text={this.props.text}
@@ -20,6 +20,7 @@ class InputArea extends React.Component {
         handleSaveClick={() => this.props.save({
           text: this.props.text,
           parentId: null,
+          author: this.props.currentUserId
         })}
         handleTextareaChange={e => this.props.setText(e.target.value)}
       />
@@ -39,12 +40,16 @@ InputArea.propTypes = {
   save: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   setText: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  currentUserId: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
   status: s.inputArea.getStatus(state),
   charactersCountLabel: s.inputArea.getCharactersCountLabel(state),
   text: s.inputArea.getText(state),
+  isLoggedIn: s.auth.getIsLoggedIn(state),
+  currentUserId: s.auth.getCurrentUserId(state),
 });
 
 export default connect(

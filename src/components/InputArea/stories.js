@@ -6,14 +6,21 @@ import InputArea from './InputArea';
 
 storiesOf('InputArea', module)
   .addDecorator(story => <Provider story={story()} />)
+  .add('isLoggedIn: false', () =>
+    <InputArea
+      isLoggedIn={false}
+    />
+  )
   .add('status: initial', () =>
     <InputArea
+      isLoggedIn={true}
       status="initial"
       text="This is my first message!"
     />
   )
   .add('status: new', () =>
     <InputArea
+      isLoggedIn={true}
       status="new"
       text="This is my first message!"
       remainingCharacters={20}
@@ -27,6 +34,7 @@ storiesOf('InputArea', module)
   // )
   .add('status: saving', () =>
     <InputArea
+      isLoggedIn={true}
       status="saving"
       text="This is my first message!"
     />

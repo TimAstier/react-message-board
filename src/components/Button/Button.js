@@ -13,11 +13,12 @@ const Wrapper = styled.button`
   font-size: 18px;
   outline: none;
   cursor: pointer;
+  opacity: ${props => props.disabled ? 0.3 : 1};
 `;
 
-const Button = ({ label, handleClick, secondary }) => {
+const Button = ({ label, handleClick, secondary, disabled }) => {
   return (
-    <Wrapper onClick={handleClick} secondary={secondary}>
+    <Wrapper onClick={handleClick} secondary={secondary} disabled={disabled}>
       {label}
     </Wrapper>
   );
@@ -27,6 +28,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   secondary: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export default Button;
