@@ -8,9 +8,10 @@ This is a coding exercise to practice front-end development.
 
 ## TODO
 
-- [ ] animate Message mounting / unmounting
-- [ ] fix textarea
-- [ ] display error if can't reach the server
+- saving animation
+- animate Message mounting / unmounting
+- fix textarea
+- display error if can't reach the server
 
 
 ## Requirements

@@ -54,27 +54,27 @@ storiesOf('Thread', module)
   .add('with one message', () =>
     <Thread
       currentUserId={1}
-      originalMessage={messageA}
+      parentMessage={messageA}
       childMessages={[]}
     />
   )
   .add('with two child messages', () =>
     <Thread
       currentUserId={1}
-      originalMessage={messageA}
+      parentMessage={messageA}
       childMessages={[messageB, messageC]}
     />
   )
   .add('with many child messages', () =>
     <Thread
       currentUserId={1}
-      originalMessage={messageA}
+      parentMessage={messageA}
       childMessages={manyMessages}
     />
   ).add('with long original message', () =>
     <Thread
       currentUserId={1}
-      originalMessage={messageD}
+      parentMessage={messageD}
       childMessages={manyMessages}
     />
   );

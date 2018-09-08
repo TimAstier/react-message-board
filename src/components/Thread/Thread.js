@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const OriginalMessageWrapper = styled.div`
+const ParentMessageWrapper = styled.div`
   flex-grow: 1;
 `;
 
@@ -44,15 +44,16 @@ class Thread extends React.Component {
   }
   
   render() {
+    const { parentMessage, currentUserId } = this.props;
     return (
       <Wrapper>
-        <OriginalMessageWrapper>
+        <ParentMessageWrapper>
           <Message
-            text={this.props.originalMessage.text}
-            belongsToCurrentUser={this.props.originalMessage.author === this.props.currentUserId}
+            text={parentMessage.text}
+            belongsToCurrentUser={parentMessage.author === currentUserId}
             isChild={false}
           />
-        </OriginalMessageWrapper>
+        </ParentMessageWrapper>
         <ChildMessagesWrapper>
           {this.renderChildMessages()}
         </ChildMessagesWrapper>
@@ -62,7 +63,7 @@ class Thread extends React.Component {
 };
 
 Thread.propTypes = {
-  originalMessage: PropTypes.instanceOf(MessageModel).isRequired,
+  parentMessage: PropTypes.instanceOf(MessageModel).isRequired,
   childMessages: PropTypes.arrayOf(PropTypes.instanceOf(MessageModel)).isRequired,
   currentUserId: PropTypes.number,
 };

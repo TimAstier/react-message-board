@@ -1,3 +1,10 @@
 {
-  "messages": []
+  "messages": [
+    {
+      "text": "Great, loving it",
+      "parentId": null,
+      "author": 1,
+      "id": 1
+    }
+  ]
 }

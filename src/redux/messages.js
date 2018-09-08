@@ -115,7 +115,7 @@ export const actions = {
 
 const getMessages = state => state;
 
-// TODO: move this logic in a normalizer function
+// [Message] => [[parentMessage, ...childMessages]]
 const getThreads = createSelector(
   getMessages,
   messages => {

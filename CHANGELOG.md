@@ -17,21 +17,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 ---
 
-## [0.0.2] 2018-09-07
+## [0.1.2] 2018-09-07
 
 ### Added
 - Fake users and authentication
 - Welcome message
 - Not allow saving empty messages
 
-## [0.0.12] 2018-09-06
+## [0.1.1] 2018-09-06
 
 ### Added
 - Load messages
 - Possibility to create and save a new message
 - Spinners and loading status
 
-## [0.0.11] 2018-09-04
+## [0.1.0] 2018-09-04
 
 ### Added
 - Load stories dynamically

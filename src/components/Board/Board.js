@@ -28,15 +28,15 @@ class Board extends React.Component {
   
   renderThreads() {
     const { threads, currentUserId } = this.props;
-    // TODO: handle the slice part in a selector
     return threads
-      ? threads.map((t, i) => { 
+      ? threads.map((thread, i) => {
+        const [parentMessage, ...childMessages] = thread;
         return (
           <ThreadWrapper key={i}>
             <Thread
               currentUserId={currentUserId}
-              originalMessage={t[0]}
-              childMessages={t.slice(1)}
+              parentMessage={parentMessage}
+              childMessages={childMessages}
             />
             </ThreadWrapper>
         );
