@@ -15,8 +15,7 @@ const store = createStore(
     )
   );
   
-// Start all Sagas at once
-// (A little awkard to get this here in this file)
+// Start all sagas at once
 sagaMiddleware.run(rootSaga);
 
 export default store;

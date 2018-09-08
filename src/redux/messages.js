@@ -14,6 +14,9 @@ export const types = {
   SAVE: 'messages/SAVE',
   SAVE_SUCCEEDED: 'messages/SAVE_SUCCEEDED',
   SAVE_FAILED: 'messages/SAVE_FAILED',
+  DELETE: 'message/DELETE',
+  DELETE_SUCCEEDED: 'messages/DELETE_SUCCEEDED',
+  DELETE_FAILED: 'messages/DELETE_FAILED',
 };
 
 // Reducer
@@ -23,6 +26,16 @@ export const INITIAL_STATE = List();
 const reduceRemove = (state, action) => {
   const index = state.findIndex(m => m.id === action.payload.id);
   return index !== -1 ? state.delete(index) : state;
+};
+
+
+// TODO: generic (update property)
+const reduceDelete = (state, action) => {
+  const index = state.findIndex(m => m.id === action.payload.id);
+  if (index !== -1) {
+    return state.update(index, m => m.set('loading', true));
+  }
+  return state;
 };
 
 const reduceUpdate = (state, action) => {
@@ -39,12 +52,13 @@ const reduceFetchSucceeded = (state, action) => {
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch(action.type) {
+    case types.SAVE_SUCCEEDED:
     case types.ADD: return state.push(new Message(action.payload.message));
+    case types.DELETE: return reduceDelete(state, action);
+    case types.DELETE_SUCCEEDED:
     case types.REMOVE: return reduceRemove(state, action);
     case types.UPDATE: return reduceUpdate(state, action);
     case types.FETCH_SUCCEEDED: return reduceFetchSucceeded(state, action);
-    case types.SAVE_SUCCEEDED:
-      return state.push(new Message(action.payload.data));
     default: return state;
   }
 }
@@ -80,6 +94,21 @@ const fetchFailed = error => ({
   payload: { error }
 });
 
+const myDelete = id => ({
+  type: types.DELETE,
+  payload: { id }
+});
+
+const deleteSucceeded = id => ({
+  type: types.DELETE_SUCCEEDED,
+  payload: { id }
+});
+
+const deleteFailed = error => ({
+  type: types.DELETE_FAILED,
+  payload: { error }
+});
+
 const save = ({text, parentId, author}) => ({
   type: types.SAVE,
   payload: {
@@ -89,9 +118,9 @@ const save = ({text, parentId, author}) => ({
   }
 });
 
-const saveSucceeded = data => ({
+const saveSucceeded = message => ({
   type: types.SAVE_SUCCEEDED,
-  payload: { data }
+  payload: { message }
 });
 
 const saveFailed = error => ({
@@ -109,6 +138,9 @@ export const actions = {
   save,
   saveSucceeded,
   saveFailed,
+  delete: myDelete,
+  deleteSucceeded,
+  deleteFailed,
 };
 
 // Selectors

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { Spinner } from '../.';
 import MessageButton from './MessageButton';
 
 const Wrapper = styled.div`
@@ -41,9 +42,19 @@ const TextWrapper = styled.div`
   word-wrap: break-word;
 `;
 
+const SpinnerWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 class Message extends React.Component{
   renderContent() {
-    const { text, children } = this.props;
+    const { text, children, loading } = this.props;
+    if (loading) {
+      return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
+    }
     if (text) {
       return (
         <TextWrapper>
@@ -59,6 +70,7 @@ class Message extends React.Component{
   
   render() {
     const {
+      loading,
       belongsToCurrentUser,
       isChild,
       noIcons,
@@ -70,14 +82,14 @@ class Message extends React.Component{
     return (
       <Wrapper isChild={isChild} opacity={opacity}>
         <LeftSidebar>
-          { !noIcons && !isChild &&
+          { !loading && !noIcons && !isChild &&
             <MessageButton icon="hookedArrow" handleClick={handleRespondClick} />
           }
         </LeftSidebar>
         {this.renderContent()}
         <RightSidebar>
           {
-            !noIcons && belongsToCurrentUser &&
+            !loading && !noIcons && belongsToCurrentUser &&
             <Fragment>
               <MessageButton icon="xmark" handleClick={handleDeleteClick} />
               <MessageButton icon="pencil" handleClick={handleEditClick} />
@@ -99,6 +111,7 @@ Message.propTypes = {
   handleEditClick: PropTypes.func,
   children: PropTypes.node,
   opacity: PropTypes.number,
+  loading: PropTypes.bool
 };
 
 Message.defaultProps = {

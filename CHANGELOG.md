@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Users can respond to parent messages
+- Users can delete their messages
 
 ## [0.1.2] 2018-09-07
 
@@ -28,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fake users and authentication
 - Welcome message
 - Not allow saving empty messages
+- Delete message
 
 ## [0.1.1] 2018-09-06
 

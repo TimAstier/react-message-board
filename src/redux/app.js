@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { types as messagesTypes } from './messages';
 
 // Types
 
@@ -16,6 +17,8 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
   switch(action.type) {
     case types.SET_LOADING:
       return state.set('loading', action.payload.loading);
+    case messagesTypes.FETCH_SUCCEEDED:
+      return state.set('loading', false);
     default: return state;
   }
 }

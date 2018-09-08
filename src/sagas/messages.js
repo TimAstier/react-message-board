@@ -1,16 +1,14 @@
-import { takeLatest, put, call, all } from 'redux-saga/effects';
-import { types, actions as messagesActions } from '../redux/messages';
-import { actions as appActions } from '../redux/app';
+import { takeLatest, put, call, all, takeEvery } from 'redux-saga/effects';
+import { types as messagesTypes, actions} from '../redux/messages';
 import Api from '../helpers/api';
 
 function* fetch() {
   try {
     const response = yield call(Api.get, '/messages');
-    yield put(messagesActions.fetchSucceeded(response.data));
-    yield put(appActions.setLoading(false));
+    yield put(actions.fetchSucceeded(response.data));
   }
   catch(error) {
-    yield put(messagesActions.fetchFailed(error));
+    yield put(actions.fetchFailed(error));
   }
 }
 
@@ -20,17 +18,38 @@ function* save(action) {
     const response = yield call(
       Api.post, '/messages', { text, parentId, author }
     );
-    yield put(messagesActions.saveSucceeded(response.data));
+    yield put(actions.saveSucceeded(response.data));
   }
   catch(error) {
-    yield put(messagesActions.saveFailed(error));
+    yield put(actions.saveFailed(error));
   }
 }
 
+// NOTE: the server should delete all child messages when parent is deleted
+function* myDelete(action) {
+  try {
+    const { id } = action.payload;
+    const response = yield call(
+      Api.delete, '/messages', id
+    );
+    // TODO: mock-api should return 204
+    if (response.status === 200) {
+      yield put(actions.deleteSucceeded(id));
+    } else {
+      yield put(actions.deleteFailed());
+    }
+  }
+  catch(error) {
+    yield put(actions.deleteFailed(error));
+  }
+}
+
+
 function* watchMessagesSagas() {
   yield all([
-    takeLatest(types.FETCH, fetch),
-    takeLatest(types.SAVE, save),
+    takeLatest(messagesTypes.FETCH, fetch),
+    takeEvery(messagesTypes.SAVE, save),
+    takeEvery(messagesTypes.DELETE, myDelete),
   ]);
 }
 

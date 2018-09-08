@@ -10,8 +10,8 @@ const post = (endpoint, data) =>
 const put = (endpoint, data) =>
   axios.put(API_BASE_URL + endpoint, data);
 
-const myDelete = (endpoint, data) =>
-  axios.delete(API_BASE_URL + endpoint, data);
+const myDelete = (endpoint, id) =>
+  axios.delete(API_BASE_URL + endpoint + '/' + id);
 
 const Api = { get,post, put, delete: myDelete };
 
