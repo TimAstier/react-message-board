@@ -26,6 +26,15 @@ storiesOf('InputArea', module)
       remainingCharacters={20}
     />
   )
+  .add('status: new && child', () =>
+    <InputArea
+      isLoggedIn={true}
+      status="new"
+      text="This is my first message!"
+      remainingCharacters={20}
+      isMessageChild
+    />
+  )
   // .add('status: edit', () =>
   //   <InputArea
   //     status="edit"

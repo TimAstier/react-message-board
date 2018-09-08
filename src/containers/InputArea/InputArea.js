@@ -23,6 +23,7 @@ class InputArea extends React.Component {
           author: this.props.currentUserId
         })}
         handleTextareaChange={e => this.props.setText(e.target.value)}
+        isMessageChild={this.props.parentId !== null}
       />
     );
   }

@@ -28,7 +28,7 @@ const Initial = props => {
     <Fragment>
       <LabelWrapper>{props.charactersCountLabel}</LabelWrapper>
       <SubWrapper>
-        <Message noIcons>
+        <Message noIcons isChild={props.isMessageChild}>
           <TextArea
             value={props.text}
             noBorder
@@ -58,6 +58,7 @@ Initial.propTypes = {
   handleSaveClick: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
+  isMessageChild: PropTypes.bool
 };
 
 export default Initial;

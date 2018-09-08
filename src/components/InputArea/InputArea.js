@@ -39,6 +39,7 @@ class InputArea extends React.Component {
         handleSaveClick={this.props.handleSaveClick}
         handleCancelClick={this.props.handleCancelClick}
         handleTextareaChange={this.props.handleTextareaChange}
+        isMessageChild={this.props.isMessageChild}
       />
     );
   }
@@ -50,7 +51,7 @@ class InputArea extends React.Component {
   }
   
   renderSaving() {
-    return <ChildComponents.Saving />;
+    return <ChildComponents.Saving isMessageChild={this.props.isMessageChild} />;
   }
   
   renderChildComponent() {
@@ -89,6 +90,7 @@ InputArea.propTypes = {
   handleSaveClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  isMessageChild: PropTypes.bool
 };
 
 export default InputArea;
