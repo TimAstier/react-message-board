@@ -1,8 +1,11 @@
 import { Map } from 'immutable';
-import reducer, { INITIAL_STATE, actions, selectors } from '../inputArea';
+import reducer, { INITIAL_STATE, actions as inputAreaActions, selectors }
+  from '../inputArea';
+import { actions as messageActions } from '../message';
 import { types as messagesTypes } from '../messages';
 import { types as authTypes } from '../auth';
 import { MAX_MESSAGE_LENGTH } from '../../constants'; 
+import { Message } from '../../models';
 
 describe('inputArea duck', () => {
 
@@ -13,14 +16,14 @@ describe('inputArea duck', () => {
   describe('SET_TEXT action', () => {
     
     it('updates text', () => {
-      const action = actions.setText('Hello!');
+      const action = inputAreaActions.setText('Hello!');
       const nextState = reducer(INITIAL_STATE, action);
       expect(selectors.getText(nextState)).toEqual('Hello!');
     });
     
     it('respects the MAX_MESSAGE_LENGTH limit', () => {
       let longText = '#'.repeat(MAX_MESSAGE_LENGTH + 1);
-      const action = actions.setText(longText);
+      const action = inputAreaActions.setText(longText);
       const nextState = reducer(INITIAL_STATE, action);
       expect(selectors.getText(nextState)).toEqual('');
     });
@@ -49,9 +52,22 @@ describe('inputArea duck', () => {
   });
   
   it('resets the state on SET_CURRENT_USER_ID', () => {
-    const state = Map({ text: 'whatever', status: 'new' });
+    const state = Map({ text: 'whatever', status: 'new', parentId: 4 });
     const action = { type: authTypes.SET_CURRENT_USER_ID };
     const nextState = reducer(state, action); 
     expect(nextState).toEqual(INITIAL_STATE);
+  });
+  
+  it('handles CLICKED_RESPOND', () => {
+    const message = new Message({ id: 1 });
+    const action = messageActions.clickedRespond(message);
+    const state = INITIAL_STATE.merge({ text: 'whatever' });
+    const expectedState = Map({
+      messageId: null,
+      parentId: 1,
+      text: '',
+      status: 'new'
+    });
+    expect(reducer(state, action)).toEqual(expectedState);
   });
 });

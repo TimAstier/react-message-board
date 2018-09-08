@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 ---
 
+## [0.2.0] 2018-09-08
+
+### Added
+- Users can respond to parent messages
+
 ## [0.1.2] 2018-09-07
 
 ### Added

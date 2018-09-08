@@ -3,23 +3,36 @@ import { MAX_MESSAGE_LENGTH } from '../constants';
 import { createSelector } from 'reselect';
 import { types as messagesTypes } from './messages';
 import { types as authTypes } from './auth';
+import { types as messageTypes } from './message';
 
 // Types
 
 export const types = {
-  SET_STATUS: 'userInput/SET_STATUS',
-  SET_TEXT: 'userInput/SET_TEXT',
+  SET_PARENT_ID: 'inputArea/SET_PARENT_ID',
+  SET_STATUS: 'inputArea/SET_STATUS',
+  SET_TEXT: 'inputArea/SET_TEXT',
 };
 
 // Reducer
 
 export const INITIAL_STATE = Map({
+  messageId: null,
+  parentId: null,
   text: '',
   status: 'initial',
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch(action.type) {
+    case messageTypes.CLICKED_RESPOND:
+      return state.merge({
+        messageId: null,
+        parentId: action.payload.message.id,
+        text: '',
+        status: 'new',
+      });
+    case types.SET_PARENT_ID:
+      return state.set('parentId', action.payload.parentId);
     case types.SET_STATUS:
       return state.set('status', action.payload.status);
     case types.SET_TEXT:
@@ -39,6 +52,11 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 // Action creators
 
+const setParentId = parentId => ({
+  type: types.SET_PARENT_ID,
+  payload: { parentId }
+});
+
 const setStatus = status => ({
   type: types.SET_STATUS,
   payload: { status }
@@ -50,12 +68,15 @@ const setText = text => ({
 });
 
 export const actions = {
+  setParentId,
   setStatus,
   setText,
 };
 
 // Selectors
 
+const getMessageId = state => state.get('messageId');
+const getParentId = state => state.get('parentId');
 const getStatus = state => state.get('status');
 const getText = state => state.get('text');
 
@@ -70,6 +91,8 @@ const getCharactersCountLabel = createSelector(
 );
 
 export const selectors = {
+  getMessageId,
+  getParentId,
   getStatus,
   getText,
   getRemainingCharactersCount,

@@ -58,19 +58,29 @@ class Message extends React.Component{
   }
   
   render() {
-    const { belongsToCurrentUser, isChild, noIcons, opacity } = this.props;
+    const {
+      belongsToCurrentUser,
+      isChild,
+      noIcons,
+      opacity,
+      handleDeleteClick,
+      handleEditClick,
+      handleRespondClick
+    } = this.props;
     return (
       <Wrapper isChild={isChild} opacity={opacity}>
         <LeftSidebar>
-          { !noIcons && !isChild && <MessageButton icon="hookedArrow" /> }
+          { !noIcons && !isChild &&
+            <MessageButton icon="hookedArrow" handleClick={handleRespondClick} />
+          }
         </LeftSidebar>
         {this.renderContent()}
         <RightSidebar>
           {
             !noIcons && belongsToCurrentUser &&
             <Fragment>
-              <MessageButton icon="xmark" />
-              <MessageButton icon="pencil" />
+              <MessageButton icon="xmark" handleClick={handleDeleteClick} />
+              <MessageButton icon="pencil" handleClick={handleEditClick} />
             </Fragment>
           }
         </RightSidebar>
@@ -84,9 +94,9 @@ Message.propTypes = {
   isChild: PropTypes.bool,
   noIcons: PropTypes.bool,
   belongsToCurrentUser: PropTypes.bool,
-  respond: PropTypes.func.isRequired,
-  delete: PropTypes.func.isRequired,
-  edit: PropTypes.func.isRequired,
+  handleRespondClick: PropTypes.func,
+  handleDeleteClick: PropTypes.func,
+  handleEditClick: PropTypes.func,
   children: PropTypes.node,
   opacity: PropTypes.number,
 };

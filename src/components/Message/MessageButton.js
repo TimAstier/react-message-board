@@ -22,7 +22,7 @@ const MessageButton = ({ icon, handleClick }) => {
 
 MessageButton.propTypes = {
   icon: PropTypes.oneOf(['hookedArrow', 'pencil', 'xmark']).isRequired,
-  handleClick: PropTypes.func,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default MessageButton;

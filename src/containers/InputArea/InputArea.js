@@ -19,7 +19,7 @@ class InputArea extends React.Component {
         handleCancelClick={() => this.props.setStatus('initial')}
         handleSaveClick={() => this.props.save({
           text: this.props.text,
-          parentId: null,
+          parentId: this.props.parentId,
           author: this.props.currentUserId
         })}
         handleTextareaChange={e => this.props.setText(e.target.value)}
@@ -39,6 +39,7 @@ InputArea.propTypes = {
   setStatus: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
+  parentId: PropTypes.number,
   setText: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   currentUserId: PropTypes.number,
@@ -48,6 +49,7 @@ const mapStateToProps = state => ({
   status: s.inputArea.getStatus(state),
   charactersCountLabel: s.inputArea.getCharactersCountLabel(state),
   text: s.inputArea.getText(state),
+  parentId: s.inputArea.getParentId(state),
   isLoggedIn: s.auth.getIsLoggedIn(state),
   currentUserId: s.auth.getCurrentUserId(state),
 });

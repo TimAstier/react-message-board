@@ -27,14 +27,13 @@ const SpinnerWrapper = styled.div`
 class Board extends React.Component {
   
   renderThreads() {
-    const { threads, currentUserId } = this.props;
+    const { threads } = this.props;
     return threads
       ? threads.map((thread, i) => {
         const [parentMessage, ...childMessages] = thread;
         return (
           <ThreadWrapper key={i}>
             <Thread
-              currentUserId={currentUserId}
               parentMessage={parentMessage}
               childMessages={childMessages}
             />
@@ -60,7 +59,6 @@ Board.propTypes = {
   threads: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.instanceOf(MessageModel)),
   ),
-  currentUserId: PropTypes.number,
   loading: PropTypes.bool,
 };
 

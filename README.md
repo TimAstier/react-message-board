@@ -17,7 +17,7 @@ This is a coding exercise to practice front-end development.
 ## Requirements
 
 - [x] a client can create a message in the service
-- [ ] a client can create a child-message in the service
+- [x] a client can create a child-message in the service
 - [ ] the same client can modify their message
 - [ ] the same client can delete their message
 - [x] a client can view any message available

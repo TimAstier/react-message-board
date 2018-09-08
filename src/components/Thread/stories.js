@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import Provider from '../../helpers/testComponents/Provider';
 import { Message } from '../../models';
 import Thread from './Thread';
-import _ from 'lodash';
+import times from 'lodash/times';
 
 const messageA = new Message({
   id: 1,
@@ -39,7 +40,7 @@ const messageD = new Message({
 
 const manyMessages = [];
 
-_.times(15, (i) => {
+times(15, (i) => {
   manyMessages.push(
     new Message({
       id: i + 1,
@@ -51,6 +52,7 @@ _.times(15, (i) => {
 });
 
 storiesOf('Thread', module)
+  .addDecorator(story => <Provider story={story()} />)
   .add('with one message', () =>
     <Thread
       currentUserId={1}

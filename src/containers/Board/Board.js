@@ -16,7 +16,6 @@ class Board extends React.Component {
     return (
       <BoardComponent
         threads={this.props.threads}
-        currentUserId={this.props.currentUserId}
         loading={this.props.loading}
       />
     );
@@ -27,7 +26,6 @@ Board.propTypes = {
   threads: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.instanceOf(MessageModel)),
   ),
-  currentUserId: PropTypes.number,
   fetchMessages: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
 };
@@ -35,7 +33,6 @@ Board.propTypes = {
 const mapStateToProps = state => ({
   threads: s.messages.getThreads(state),
   loading: s.app.getLoading(state),
-  currentUserId: s.auth.getCurrentUserId(state)
 });
 
 export default connect(
