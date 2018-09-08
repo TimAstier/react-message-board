@@ -8,11 +8,10 @@ This is a coding exercise to practice front-end development.
 
 ## TODO
 
-- saving animation
+- BUG: click on cancel and new should reset text and parentId
 - animate Message mounting / unmounting
 - fix textarea
 - display error if can't reach the server
-
 
 ## Requirements
 

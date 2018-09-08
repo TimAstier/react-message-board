@@ -12,7 +12,7 @@ class Message extends Component {
     const { message, currentUserId } = this.props;
     return (
       <MessageComponent
-        loading={message.loading}
+        loading={this.props.loading || message.loading}
         text={message.text}
         noIcons={currentUserId === null}
         belongsToCurrentUser={message.author === currentUserId}
@@ -31,6 +31,7 @@ Message.propTypes = {
   clickedEdit: PropTypes.func.isRequired,
   clickedRespond: PropTypes.func.isRequired,
   delete: PropTypes.func.isRequired,
+  loading: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

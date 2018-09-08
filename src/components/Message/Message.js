@@ -8,7 +8,7 @@ import MessageButton from './MessageButton';
 const Wrapper = styled.div`
   width: 250px;
   min-height: 100px;
-  background-color: ${props => props.isChild ? '#f1fab3' : '#d5f013'};
+  background-color: ${props => props.backgroundColor};
   display: flex;
   border-radius: 10px;
   opacity: ${props => props.opacity};
@@ -50,26 +50,23 @@ const SpinnerWrapper = styled.div`
 `;
 
 class Message extends React.Component{
-  renderContent() {
-    const { text, children, loading } = this.props;
-    if (loading) {
-      return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
-    }
-    if (text) {
-      return (
-        <TextWrapper>
-          {text}
-        </TextWrapper>
-      );
-    }
-    if (children) {
-      return children;
-    }
+  
+  _backgroundColor() {
+    if (!this.props.saving && this.props.loading) return 'lightgray';
+    return this.props.isChild ? '#f1fab3' : '#d5f013';
+  }
+  
+  _renderContent() {
+    const { text, children, loading, saving } = this.props;
+    if (loading || saving) return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
+    if (text) return <TextWrapper>{text}</TextWrapper>;
+    if (children) return children;
     return null;
   }
   
   render() {
     const {
+      saving,
       loading,
       belongsToCurrentUser,
       isChild,
@@ -80,16 +77,16 @@ class Message extends React.Component{
       handleRespondClick
     } = this.props;
     return (
-      <Wrapper isChild={isChild} opacity={opacity}>
+      <Wrapper backgroundColor={this._backgroundColor()} opacity={opacity}>
         <LeftSidebar>
-          { !loading && !noIcons && !isChild &&
+          { !saving && !loading && !noIcons && !isChild &&
             <MessageButton icon="hookedArrow" handleClick={handleRespondClick} />
           }
         </LeftSidebar>
-        {this.renderContent()}
+        {this._renderContent()}
         <RightSidebar>
           {
-            !loading && !noIcons && belongsToCurrentUser &&
+            !saving && !loading && !noIcons && belongsToCurrentUser &&
             <Fragment>
               <MessageButton icon="xmark" handleClick={handleDeleteClick} />
               <MessageButton icon="pencil" handleClick={handleEditClick} />
@@ -111,7 +108,8 @@ Message.propTypes = {
   handleEditClick: PropTypes.func,
   children: PropTypes.node,
   opacity: PropTypes.number,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  saving: PropTypes.bool
 };
 
 Message.defaultProps = {

@@ -29,6 +29,7 @@ storiesOf('MessageButton', module)
 storiesOf('Message', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('loading', () => <Message loading />)
+  .add('saving', () => <Message saving />)
   .add('short text', () =>
     <Message
       text="Hello world!"
