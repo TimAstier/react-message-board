@@ -8,10 +8,9 @@ This is a coding exercise to practice front-end development.
 
 ## TODO
 
-- BUG: click on cancel and new should reset text and parentId
-- animate Message mounting / unmounting
-- fix textarea
-- display error if can't reach the server
+- [ ] Fix textarea
+- [ ] Edit message
+- [ ] User names on messages?
 
 ## Requirements
 

@@ -15,8 +15,8 @@ class InputArea extends React.Component {
         status={this.props.status}
         charactersCountLabel={this.props.charactersCountLabel}
         text={this.props.text}
-        handleNewClick={() => this.props.setStatus('new')}
-        handleCancelClick={() => this.props.setStatus('initial')}
+        handleNewClick={this.props.clickedNew}
+        handleCancelClick={this.props.clickedCancel}
         handleSaveClick={() => this.props.save({
           text: this.props.text,
           parentId: this.props.parentId,
@@ -37,7 +37,8 @@ InputArea.propTypes = {
     'saving'
   ]).isRequired,
   charactersCountLabel: PropTypes.string.isRequired,
-  setStatus: PropTypes.func.isRequired,
+  clickedCancel: PropTypes.func.isRequired,
+  clickedNew: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   parentId: PropTypes.number,
@@ -58,7 +59,8 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    setStatus: inputAreaActions.setStatus,
+    clickedCancel: inputAreaActions.clickedCancel,
+    clickedNew: inputAreaActions.clickedNew,
     save: messagesActions.save,
     setText: inputAreaActions.setText,
   }

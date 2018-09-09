@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Message as MessageModel } from '../../models';
-import { actions as messageActions } from '../../redux/message';
+import { actions as inputAreaActions } from '../../redux/inputArea';
 import { actions as messagesActions } from '../../redux/messages';
 import { Message as MessageComponent } from '../../components';
 import s from '../../rootSelectors';
@@ -41,8 +41,8 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    clickedEdit: messageActions.clickedEdit,
-    clickedRespond: messageActions.clickedRespond,
+    clickedEdit: inputAreaActions.clickedEdit,
+    clickedRespond: inputAreaActions.clickedRespond,
     delete: messagesActions.delete,
   }
 )(Message);
