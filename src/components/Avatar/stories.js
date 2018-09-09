@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Avatar from './Avatar';
+import AvatarImg from './AvatarImg';
 import { USERS } from '../../constants';
 
 const renderAvatar = id => {
@@ -27,3 +28,23 @@ storiesOf('Avatar', module)
       onClick={() => console.log('clicked!')}
     />
   );
+  
+storiesOf('AvatarImg', module)
+  .add('size: 25', () => (
+    <AvatarImg
+      src={USERS[1].avatar}
+      size={25}
+    />  
+  ))
+  .add('selected', () => (
+    <AvatarImg
+      src={USERS[1].avatar}
+      selected
+    />  
+  ))
+  .add('onClick', () => (
+    <AvatarImg
+      src={USERS[1].avatar}
+      onClick={() => console.log('onClick')}
+    />  
+  ));

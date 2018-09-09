@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Spinner } from '../.';
+import { Spinner, AvatarImg } from '../.';
 import MessageButton from './MessageButton';
 
 const Wrapper = styled.div`
@@ -21,13 +21,6 @@ const Sidebar = styled.div`
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
-`;
-
-const LeftSidebar = styled(Sidebar)`
-  justify-content: flex-end;
-`;
-
-const RightSidebar = styled(Sidebar)`
   justify-content: space-between;
 `;
 
@@ -66,6 +59,7 @@ class Message extends React.Component{
   
   render() {
     const {
+      avatar,
       saving,
       loading,
       belongsToCurrentUser,
@@ -78,27 +72,42 @@ class Message extends React.Component{
     } = this.props;
     return (
       <Wrapper backgroundColor={this._backgroundColor()} opacity={opacity}>
-        <LeftSidebar>
+        <Sidebar>
+          <div>
+            { avatar && !loading &&
+              <AvatarImg src={avatar} size={25}/>
+            }
+          </div>
           { !saving && !loading && !noIcons && !isChild &&
-            <MessageButton icon="hookedArrow" handleClick={handleRespondClick} />
+            <MessageButton
+              icon="hookedArrow"
+              handleClick={handleRespondClick}
+            />
           }
-        </LeftSidebar>
+        </Sidebar>
         {this._renderContent()}
-        <RightSidebar>
+        <Sidebar>
           {
             !saving && !loading && !noIcons && belongsToCurrentUser &&
             <Fragment>
-              <MessageButton icon="xmark" handleClick={handleDeleteClick} />
-              <MessageButton icon="pencil" handleClick={handleEditClick} />
+              <MessageButton
+                icon="xmark"
+                handleClick={handleDeleteClick}
+              />
+              <MessageButton
+                icon="pencil"
+                handleClick={handleEditClick}
+              />
             </Fragment>
           }
-        </RightSidebar>
+        </Sidebar>
       </Wrapper>
     );
   } 
 }
 
 Message.propTypes = {
+  avatar: PropTypes.string,
   text: PropTypes.string,
   isChild: PropTypes.bool,
   noIcons: PropTypes.bool,

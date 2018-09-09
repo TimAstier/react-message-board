@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 ---
 
+## [0.2.1] 2018-09-09
+
+### Added
+- Animations for delete and save message
+- User avatars displayed on messages
+
 ## [0.2.0] 2018-09-08
 
 ### Added

@@ -33,16 +33,19 @@ storiesOf('Message', module)
   .add('short text', () =>
     <Message
       text="Hello world!"
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('medium text', () =>
     <Message
       text="This is our new message board! I'm so excited."
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('long text', () =>
     <Message
       text={'#'.repeat(240)}
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('other long text', () =>
@@ -53,18 +56,29 @@ storiesOf('Message', module)
       to be even longer to break the minimum height so I'm adding
       even more meaningless text.
       `}
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('belongsToCurrentUser', () =>
     <Message
       text="This is my own message."
       belongsToCurrentUser
+      handleDeleteClick={() => console.log('clicked')}
+      handleEditClick={() => console.log('clicked')}
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('isChild', () =>
     <Message
       text="Hello world!"
       isChild
+    />
+  )
+  .add('avatar', () =>
+    <Message
+      avatar="https://api.adorable.io/avatars/285/albert@adorable.io.png"
+      text="Hello world!"
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   .add('noIcons', () =>
@@ -74,7 +88,7 @@ storiesOf('Message', module)
     />
   )
   .add('children: TextArea', () =>
-    <Message>
+    <Message noIcons>
       <TextArea noBorder/>
     </Message>
   )
@@ -82,6 +96,7 @@ storiesOf('Message', module)
     <Message
       text="Hello world!"
       opacity={0.1}
+      handleRespondClick={() => console.log('clicked')}
     />
   )
   ;

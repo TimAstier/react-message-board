@@ -2,21 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import AvatarImg from './AvatarImg';
+
 const Wrapper = styled.div`
   height: 108px;
   width: 70px;
   display: flex;
   flex-direction: column;
-`;
-
-const Image = styled.img`
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: ${props => props.selected ? 'solid 2px #dce6eb' : 'none'};
-  box-shadow: ${props => props.selected ? '0 0 0pt 2pt #55b6ff' : 'none'};
-  cursor: pointer;
-  box-sizing: border-box;
 `;
 
 const Name = styled.div`  
@@ -34,7 +26,7 @@ const Name = styled.div`
 const Avatar = props => {
   return (
     <Wrapper>
-      <Image
+      <AvatarImg
         selected={props.selected}
         src={props.src}
         onClick={props.onClick}

@@ -8,9 +8,8 @@ This is a coding exercise to practice front-end development.
 
 ## TODO
 
-- [ ] Fix textarea
 - [ ] Edit message
-- [ ] User names on messages?
+- [ ] Fix textarea
 
 ## Requirements
 

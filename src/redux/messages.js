@@ -59,17 +59,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action creators
-
-// const add = message => ({
-//   type: types.ADD,
-//   payload: { message }
-// });
-// 
-// const remove = id => ({
-//   type: types.REMOVE,
-//   payload: { id }
-// });
-// 
+ 
 // const update = (id, text) => ({
 //   type: types.UPDATE,
 //   payload: { id, text }

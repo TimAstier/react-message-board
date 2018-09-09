@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { USERS } from '../../constants';
 import { Message as MessageModel } from '../../models';
 import { actions as inputAreaActions } from '../../redux/inputArea';
 import { actions as messagesActions } from '../../redux/messages';
@@ -12,6 +13,7 @@ class Message extends Component {
     const { message, currentUserId } = this.props;
     return (
       <MessageComponent
+        avatar={USERS[message.author].avatar}
         loading={this.props.loading || message.loading}
         text={message.text}
         noIcons={currentUserId === null}
