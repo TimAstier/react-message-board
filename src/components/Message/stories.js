@@ -28,8 +28,8 @@ storiesOf('MessageButton', module)
 
 storiesOf('Message', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('loading', () => <Message loading />)
-  .add('saving', () => <Message saving />)
+  .add('loading', () => <Message loading={true} />)
+  .add('saving', () => <Message saving={true} />)
   .add('short text', () =>
     <Message
       text="Hello world!"
@@ -62,7 +62,7 @@ storiesOf('Message', module)
   .add('belongsToCurrentUser', () =>
     <Message
       text="This is my own message."
-      belongsToCurrentUser
+      belongsToCurrentUser={true}
       handleDeleteClick={() => console.log('clicked')}
       handleEditClick={() => console.log('clicked')}
       handleRespondClick={() => console.log('clicked')}
@@ -71,7 +71,7 @@ storiesOf('Message', module)
   .add('isChild', () =>
     <Message
       text="Hello world!"
-      isChild
+      isChild={true}
     />
   )
   .add('avatar', () =>
@@ -84,12 +84,12 @@ storiesOf('Message', module)
   .add('noIcons', () =>
     <Message
       text="This is my own message."
-      noIcons
+      noIcons={true}
     />
   )
   .add('children: TextArea', () =>
-    <Message noIcons>
-      <TextArea noBorder/>
+    <Message noIcons={true}>
+      <TextArea noBorder={true}/>
     </Message>
   )
   .add('opacity: 0.1', () =>

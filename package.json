@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint --ext .js --ext .jsx src",
     "lint:watch": "watch 'npm run lint'",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",

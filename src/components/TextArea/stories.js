@@ -20,6 +20,6 @@ storiesOf('TextArea', module)
     <TextArea
       value="This TextArea has no border."
       handleChange={() => console.log('change!')}
-      noBorder
+      noBorder={true}
     />
   );

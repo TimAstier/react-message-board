@@ -10,6 +10,7 @@ This is a coding exercise to practice front-end development.
 
 - [ ] Edit message
 - [ ] Fix textarea
+- [ ] Smooth animations when adding / deleting?
 
 ## Requirements
 

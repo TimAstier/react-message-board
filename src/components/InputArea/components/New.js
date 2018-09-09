@@ -28,10 +28,10 @@ const Initial = props => {
     <Fragment>
       <LabelWrapper>{props.charactersCountLabel}</LabelWrapper>
       <SubWrapper>
-        <Message noIcons isChild={props.isMessageChild}>
+        <Message noIcons={true} isChild={props.isMessageChild}>
           <TextArea
             value={props.text}
-            noBorder
+            noBorder={true}
             handleChange={props.handleTextareaChange}
           />
         </Message>
@@ -39,7 +39,7 @@ const Initial = props => {
       <ButtonsWrapper>
         <Button
           label="Cancel"
-          secondary
+          secondary={true}
           handleClick={props.handleCancelClick}
         />
         <Button

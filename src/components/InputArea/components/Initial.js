@@ -15,7 +15,7 @@ const Initial = ({ handleNewClick }) => {
       <MessageWrapper>
         <Message
           text=""
-          noIcons
+          noIcons={true}
           opacity={0}
         />
       </MessageWrapper>

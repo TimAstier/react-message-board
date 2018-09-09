@@ -22,7 +22,7 @@ storiesOf('Avatar', module)
   .add('userId: 5', () => renderAvatar(5))
   .add('selected', () =>
     <Avatar
-      selected
+      selected={true}
       name={USERS[1].name}
       src={USERS[1].avatar}
       onClick={() => console.log('clicked!')}
@@ -39,7 +39,7 @@ storiesOf('AvatarImg', module)
   .add('selected', () => (
     <AvatarImg
       src={USERS[1].avatar}
-      selected
+      selected={true}
     />  
   ))
   .add('onClick', () => (

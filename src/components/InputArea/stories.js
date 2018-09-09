@@ -32,7 +32,7 @@ storiesOf('InputArea', module)
       status="new"
       text="This is my first message!"
       remainingCharacters={20}
-      isMessageChild
+      isMessageChild={true}
     />
   )
   // .add('status: edit', () =>

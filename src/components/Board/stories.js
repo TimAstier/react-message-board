@@ -62,7 +62,7 @@ storiesOf('Board', module)
   .addDecorator(story => <Provider story={story()} />)
   .add('loading', () =>
     <Board
-      loading
+      loading={true}
     />
   )
   .add('empty', () =>

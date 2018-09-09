@@ -18,14 +18,14 @@ storiesOf('Button', module)
   .add('secondary: true', () =>
     <Button
       label="Test"
-      secondary
+      secondary={true}
       handleClick={() => console.log('clicked!')}
     />
   )
   .add('disabled', () =>
     <Button
       label="Test"
-      disabled
+      disabled={true}
       handleClick={() => console.log('clicked!')}
     />
   );

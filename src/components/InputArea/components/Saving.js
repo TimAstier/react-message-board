@@ -11,7 +11,7 @@ const MessageWrapper = styled.div`
 
 const Saving = ({ isMessageChild }) => (
   <MessageWrapper>
-    <Message saving isChild={isMessageChild}/>
+    <Message saving={true} isChild={isMessageChild}/>
   </MessageWrapper>
 );
 
