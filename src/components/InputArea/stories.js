@@ -11,40 +11,42 @@ storiesOf('InputArea', module)
       isLoggedIn={false}
     />
   ))
-  .add('status: initial', () => (
+  .add("status: 'initial'", () => (
     <InputArea
       isLoggedIn={true}
       status="initial"
-      text="This is my first message!"
     />
   ))
-  .add('status: new', () => (
+  .add("status: 'new'", () => (
     <InputArea
       isLoggedIn={true}
       status="new"
-      text="This is my first message!"
-      remainingCharacters={20}
+    />
+  ))
+  .add("charactersCountLabel: 'TEST'", () => (
+    <InputArea
+      isLoggedIn={true}
+      status="new"
+      charactersCountLabel="TEST"
     />
   ))
   .add('status: new && child', () => (
     <InputArea
       isLoggedIn={true}
       status="new"
-      text="This is my first message!"
-      remainingCharacters={20}
+      text=""
       isMessageChild={true}
     />
   ))
-  // .add('status: edit', () =>
-  //   <InputArea
-  //     status="edit"
-  //     text="This is my first message!"
-  //   />
-  // )
+  .add("status: 'edit'", () => (
+    <InputArea
+      isLoggedIn={true}
+      status="edit"
+    />
+  ))
   .add('status: saving', () => (
     <InputArea
       isLoggedIn={true}
       status="saving"
-      text="This is my first message!"
     />
   ));

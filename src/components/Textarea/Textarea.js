@@ -29,8 +29,8 @@ const Textarea = props => {
 };
 
 Textarea.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
   noBorder: PropTypes.bool,
   autoFocus: PropTypes.bool,
 };

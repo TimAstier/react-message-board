@@ -26,7 +26,7 @@ You need to run both the *client* and the *mock api* (see below) to get React Me
 
 ```sh
 # Clone the repository
-$ https://github.com/TimAstier/react-message-board
+$ git clone https://github.com/TimAstier/react-message-board
 
 # Install dependencies
 $ cd react-message-board
@@ -43,7 +43,6 @@ $ npm start
 This prototype app has been developed with a mock api powered by [json-server](https://github.com/typicode/json-server).  
 
 ```sh
-# Run the mock api
 $ npm run mock-api
 
 # The mock server should be running on http://localhost:3004

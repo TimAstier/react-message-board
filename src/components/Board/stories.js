@@ -48,14 +48,14 @@ _.times(15, (i) => {
     new Message({
       id: i + 2,
       text: 'Me please!',
-      author: i + 2,
-      parentId: 1,
+      author: 1,
+      parentId: i,
     })
   );
 });
 
-_.times(8, () => {
-  manyThreads.push([messageA, ...manyMessages]);
+_.times(8, (i) => {
+  manyThreads.push([messageA.set('id', i), ...manyMessages]);
 });
 
 storiesOf('Board', module)

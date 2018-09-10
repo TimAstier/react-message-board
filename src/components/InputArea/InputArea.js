@@ -89,6 +89,20 @@ class InputArea extends React.Component {
   }
 }
 
+InputArea.defaultProps = {
+  status: 'initial',
+  charactersCountLabel: '0/240',
+  text: '',
+  isLoggedIn: false,
+  // NOTE: This is mainly to avoid warnings/errors in the storybook console...
+  // is there a smarter way to do this ? (a test action maybe)
+  handleNewClick: () => { console.log('clicked new!'); },
+  handleCancelClick: () => { console.log('clicked cancel!'); },
+  handleCreateClick: () => { console.log('clicked create!'); },
+  handleUpdateClick: () => { console.log('clicked update!'); },
+  handleTextareaChange: () => { console.log('changed text!'); },
+};
+
 InputArea.propTypes = {
   status: PropTypes.oneOf([
     'initial',
