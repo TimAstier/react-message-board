@@ -22,7 +22,7 @@ storiesOf('Button', module)
       handleClick={() => console.log('clicked!')}
     />
   )
-  .add('disabled', () =>
+  .add('disabled: true', () =>
     <Button
       label="Test"
       disabled={true}

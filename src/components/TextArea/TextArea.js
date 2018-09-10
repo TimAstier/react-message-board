@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledTextArea = styled.textarea`
+const StyledTextarea = styled.textarea`
   outline: none;
   resize: none;
   border: ${props => props.noBorder ? 'none' : '1px solid black'};
@@ -14,9 +14,10 @@ const StyledTextArea = styled.textarea`
   text-align: center;
 `;
 
-const TextArea = props => {
+const Textarea = props => {
   return (
-    <StyledTextArea
+    <StyledTextarea
+      autoFocus={props.autoFocus}
       noBorder={props.noBorder}
       value={props.value}
       onChange={props.handleChange}
@@ -24,10 +25,11 @@ const TextArea = props => {
   );
 };
 
-TextArea.propTypes = {
+Textarea.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   noBorder: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 };
 
-export default TextArea;
+export default Textarea;

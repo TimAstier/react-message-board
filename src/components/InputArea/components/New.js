@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button, Message, TextArea } from '../../.';
+import { Button, Message, Textarea } from '../../.';
 
 const SubWrapper = styled.div`
   margin-bottom: 20px;
@@ -21,17 +21,16 @@ const LabelWrapper = styled.div`
   align-items: center;
 `;
 
-// TODO: auto focus input
-
 const Initial = props => {
   return (
     <Fragment>
       <LabelWrapper>{props.charactersCountLabel}</LabelWrapper>
       <SubWrapper>
         <Message noIcons={true} isChild={props.isMessageChild}>
-          <TextArea
-            value={props.text}
+          <Textarea
+            autoFocus={true}
             noBorder={true}
+            value={props.text}
             handleChange={props.handleTextareaChange}
           />
         </Message>

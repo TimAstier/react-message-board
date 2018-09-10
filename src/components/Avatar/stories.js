@@ -36,7 +36,7 @@ storiesOf('AvatarImg', module)
       size={25}
     />  
   ))
-  .add('selected', () => (
+  .add('selected: true', () => (
     <AvatarImg
       src={USERS[1].avatar}
       selected={true}

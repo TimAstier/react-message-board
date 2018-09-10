@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Provider from '../../helpers/testComponents/Provider';
 import Message from './Message';
 import MessageButton from './MessageButton';
-import { TextArea } from '../.';
+import { Textarea } from '../.';
 
 storiesOf('MessageButton', module)
   .add('icon: hookedArrow', () => 
@@ -87,9 +87,9 @@ storiesOf('Message', module)
       noIcons={true}
     />
   )
-  .add('children: TextArea', () =>
+  .add('children: Textarea', () =>
     <Message noIcons={true}>
-      <TextArea noBorder={true}/>
+      <Textarea noBorder={true}/>
     </Message>
   )
   .add('opacity: 0.1', () =>

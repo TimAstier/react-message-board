@@ -60,12 +60,12 @@ _.times(8, (i) => {
 
 storiesOf('Board', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('loading', () =>
+  .add('loading: true', () =>
     <Board
       loading={true}
     />
   )
-  .add('empty', () =>
+  .add('empty: true', () =>
     <Board
       threads={[]}
       currentUserId={1}

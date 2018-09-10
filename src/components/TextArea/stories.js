@@ -1,25 +1,32 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import TextArea from './TextArea';
+import Textarea from './Textarea';
 
-storiesOf('TextArea', module)
-  .add('empty', () => 
-    <TextArea
+storiesOf('Textarea', module)
+  .add("text: ''", () => 
+    <Textarea
       value=""
       handleChange={() => console.log('change!')}
     />
   )
   .add('long text', () => 
-    <TextArea
+    <Textarea
       value={'#'.repeat(240)}
       handleChange={() => console.log('change!')}
     />
   )
-  .add('noBorder', () => 
-    <TextArea
-      value="This TextArea has no border."
+  .add('noBorder: true', () => 
+    <Textarea
+      value="This Textarea has no border."
       handleChange={() => console.log('change!')}
       noBorder={true}
+    />
+  )
+  .add('autoFocus: true', () => 
+    <Textarea
+      value=""
+      autoFocus={true}
+      handleChange={() => console.log('change!')}
     />
   );
