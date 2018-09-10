@@ -26,21 +26,39 @@ describe('inputArea duck', () => {
     it('returns the initial state', () => {
       expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
     });
-    it('sets status to "saving" on a SAVE', () => {
+    it('sets status to "saving" on a CREATE', () => {
       const state = Map({ status: 'new' });
       const expectedState = Map({ status: 'saving' });
-      const action = { type: messagesTypes.SAVE };
+      const action = { type: messagesTypes.CREATE };
       expect(reducer(state, action)).toEqual(expectedState);
     });
-    it('sets status to "initial" on SAVE_SUCCEEDED', () => {
+    it('sets status to "initial" on CREATE_SUCCEEDED', () => {
       const state = Map({ status: 'saving' });
-      const action = { type: messagesTypes.SAVE_SUCCEEDED };
+      const action = { type: messagesTypes.CREATE_SUCCEEDED };
       const nextState = reducer(state, action);
       expect(selectors.getStatus(nextState)).toEqual('initial');
     });
-    it('sets text to an empty string on SAVE_SUCCEEDED', () => {
+    it('sets text to an empty string on CREATE_SUCCEEDED', () => {
       const state = Map({ text: 'whatever' });
-      const action = { type: messagesTypes.SAVE_SUCCEEDED };
+      const action = { type: messagesTypes.CREATE_SUCCEEDED };
+      const nextState = reducer(state, action);
+      expect(selectors.getText(nextState)).toEqual('');
+    });
+    it('sets status to "saving" on a UPDATE', () => {
+      const state = Map({ status: 'new' });
+      const expectedState = Map({ status: 'saving' });
+      const action = { type: messagesTypes.UPDATE };
+      expect(reducer(state, action)).toEqual(expectedState);
+    });
+    it('sets status to "initial" on UPDATE_SUCCEEDED', () => {
+      const state = Map({ status: 'saving' });
+      const action = { type: messagesTypes.UPDATE_SUCCEEDED };
+      const nextState = reducer(state, action);
+      expect(selectors.getStatus(nextState)).toEqual('initial');
+    });
+    it('sets text to an empty string on UPDATE_SUCCEEDED', () => {
+      const state = Map({ text: 'whatever' });
+      const action = { type: messagesTypes.UPDATE_SUCCEEDED };
       const nextState = reducer(state, action);
       expect(selectors.getText(nextState)).toEqual('');
     });
@@ -59,6 +77,18 @@ describe('inputArea duck', () => {
         parentId: 1,
         text: '',
         status: 'new',
+      });
+      expect(reducer(state, action)).toEqual(expectedState);
+    });
+    it('handles CLICKED_EDIT', () => {
+      const message = new Message({ id: 1, text: 'cool text' });
+      const action = inputAreaActions.clickedEdit(message);
+      const state = INITIAL_STATE.merge({ text: 'whatever' });
+      const expectedState = Map({
+        messageId: 1,
+        parentId: null,
+        text: 'cool text',
+        status: 'edit',
       });
       expect(reducer(state, action)).toEqual(expectedState);
     });

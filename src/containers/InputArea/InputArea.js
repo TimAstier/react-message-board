@@ -16,10 +16,16 @@ class InputArea extends React.Component {
         text={this.props.text}
         handleNewClick={this.props.clickedNew}
         handleCancelClick={this.props.clickedCancel}
-        handleSaveClick={() => this.props.save({
+        handleCreateClick={() => this.props.create({
           text: this.props.text,
           parentId: this.props.parentId,
           author: this.props.currentUserId,
+        })}
+        handleUpdateClick={() => this.props.update({
+          id: this.props.messageId,
+          text: this.props.text,
+          author: this.props.currentUserId,
+          parentId: this.props.parentId,
         })}
         handleTextareaChange={e => this.props.setText(e.target.value)}
         isMessageChild={this.props.parentId !== null}
@@ -38,12 +44,14 @@ InputArea.propTypes = {
   charactersCountLabel: PropTypes.string.isRequired,
   clickedCancel: PropTypes.func.isRequired,
   clickedNew: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
+  create: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   parentId: PropTypes.number,
   setText: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   currentUserId: PropTypes.number,
+  messageId: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
@@ -51,6 +59,7 @@ const mapStateToProps = state => ({
   charactersCountLabel: s.inputArea.getCharactersCountLabel(state),
   text: s.inputArea.getText(state),
   parentId: s.inputArea.getParentId(state),
+  messageId: s.inputArea.getMessageId(state),
   isLoggedIn: s.auth.getIsLoggedIn(state),
   currentUserId: s.auth.getCurrentUserId(state),
 });
@@ -60,7 +69,8 @@ export default connect(
   {
     clickedCancel: inputAreaActions.clickedCancel,
     clickedNew: inputAreaActions.clickedNew,
-    save: messagesActions.save,
+    create: messagesActions.create,
+    update: messagesActions.update,
     setText: inputAreaActions.setText,
   }
 )(InputArea);

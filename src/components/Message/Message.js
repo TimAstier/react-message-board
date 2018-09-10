@@ -51,13 +51,13 @@ const SpinnerWrapper = styled.div`
 
 class Message extends React.Component {
   backgroundColor() {
-    if (!this.props.saving && this.props.loading) return 'lightgray';
+    if (!this.props.saving && this.props.deleting) return 'lightgray';
     return this.props.isChild ? '#f1fab3' : '#d5f013';
   }
 
   renderContent() {
-    const { text, children, loading, saving } = this.props;
-    if (loading || saving) return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
+    const { text, children, deleting, saving } = this.props;
+    if (deleting || saving) return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
     if (text) return <TextWrapper>{text}</TextWrapper>;
     if (children) return children;
     return null;
@@ -68,7 +68,7 @@ class Message extends React.Component {
       children,
       avatar,
       saving,
-      loading,
+      deleting,
       belongsToCurrentUser,
       isChild,
       noIcons,
@@ -82,11 +82,11 @@ class Message extends React.Component {
         { children === undefined &&
           <Sidebar>
             <div>
-              { avatar && !loading &&
+              { avatar && !deleting &&
                 <AvatarImg src={avatar} size={25} />
               }
             </div>
-            { !saving && !loading && !noIcons && !isChild &&
+            { !saving && !deleting && !noIcons && !isChild &&
               <MessageButton
                 icon="hookedArrow"
                 handleClick={handleRespondClick}
@@ -99,7 +99,7 @@ class Message extends React.Component {
         { children === undefined &&
           <Sidebar>
             {
-              !saving && !loading && !noIcons && belongsToCurrentUser &&
+              !saving && !deleting && !noIcons && belongsToCurrentUser &&
               <Fragment>
                 <MessageButton
                   icon="xmark"
@@ -129,7 +129,7 @@ Message.propTypes = {
   handleEditClick: PropTypes.func,
   children: PropTypes.node,
   opacity: PropTypes.number,
-  loading: PropTypes.bool,
+  deleting: PropTypes.bool,
   saving: PropTypes.bool,
 };
 

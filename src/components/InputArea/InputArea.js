@@ -26,7 +26,7 @@ const Welcome = () => (
     <h1>React Message Board</h1>
     <h2>&#8679; Chose an avatar to get started &#8679;</h2>
     <p>
-      See source on
+      {'See source on '}
       <GithubLink />
       .
     </p>
@@ -42,13 +42,15 @@ class InputArea extends React.Component {
     );
   }
 
-  renderNew() {
+  renderInput(primaryLabel, handlePrimaryClick) {
     return (
-      <ChildComponents.New
+      <ChildComponents.Input
         charactersCountLabel={this.props.charactersCountLabel}
+        primaryLabel={primaryLabel}
         text={this.props.text}
-        handleSaveClick={this.props.handleSaveClick}
+        status={this.props.status}
         handleCancelClick={this.props.handleCancelClick}
+        handlePrimaryClick={handlePrimaryClick}
         handleTextareaChange={this.props.handleTextareaChange}
         isMessageChild={this.props.isMessageChild}
       />
@@ -56,7 +58,11 @@ class InputArea extends React.Component {
   }
 
   renderSaving() {
-    return <ChildComponents.Saving isMessageChild={this.props.isMessageChild} />;
+    return (
+      <ChildComponents.Saving
+        isMessageChild={this.props.isMessageChild}
+      />
+    );
   }
 
   renderChildComponent() {
@@ -65,8 +71,10 @@ class InputArea extends React.Component {
     }
     switch (this.props.status) {
       case 'initial': return this.renderInitial();
-      case 'new': return this.renderNew();
-      case 'edit': return <ChildComponents.Edit />;
+      case 'new':
+        return this.renderInput('Create', this.props.handleCreateClick);
+      case 'edit':
+        return this.renderInput('Update', this.props.handleUpdateClick);
       case 'saving': return this.renderSaving();
       default: return null;
     }
@@ -92,7 +100,8 @@ InputArea.propTypes = {
   text: PropTypes.string.isRequired,
   handleNewClick: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
-  handleSaveClick: PropTypes.func.isRequired,
+  handleCreateClick: PropTypes.func.isRequired,
+  handleUpdateClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   isMessageChild: PropTypes.bool,

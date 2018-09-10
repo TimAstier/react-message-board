@@ -33,7 +33,7 @@ class Thread extends React.Component {
   renderChildMessages() {
     return this.props.childMessages.map(m => (
       <MessageWrapper key={m.id}>
-        <Message message={m} loading={this.props.parentMessage.loading} />
+        <Message message={m} deleting={this.props.parentMessage.deleting} />
       </MessageWrapper>
     ));
   }

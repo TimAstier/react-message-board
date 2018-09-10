@@ -9,12 +9,15 @@ export const types = {
   FETCH: 'messages/FETCH',
   FETCH_SUCCEEDED: 'messages/FETCH_SUCCEEDED',
   FETCH_FAILED: 'messages/FETCH_FAILED',
-  SAVE: 'messages/SAVE',
-  SAVE_SUCCEEDED: 'messages/SAVE_SUCCEEDED',
-  SAVE_FAILED: 'messages/SAVE_FAILED',
+  CREATE: 'messages/CREATE',
+  CREATE_SUCCEEDED: 'messages/CREATE_SUCCEEDED',
+  CREATE_FAILED: 'messages/CREATE_FAILED',
   DELETE: 'messages/DELETE',
   DELETE_SUCCEEDED: 'messages/DELETE_SUCCEEDED',
   DELETE_FAILED: 'messages/DELETE_FAILED',
+  UPDATE: 'messages/UPDATE',
+  UPDATE_SUCCEEDED: 'messages/UPDATE_SUCCEEDED',
+  UPDATE_FAILED: 'messages/UPDATE_FAILED',
 };
 
 // Reducer
@@ -24,9 +27,13 @@ export const INITIAL_STATE = List();
 const reduceDelete = (state, action) => {
   const index = state.findIndex(m => m.id === action.payload.id);
   if (index !== -1) {
-    return state.update(index, m => m.set('loading', true));
+    return state.update(index, m => m.set('deleting', true));
   }
   return state;
+};
+
+const reduceCreateSucceeded = (state, action) => {
+  return state.push(new Message(action.payload.message));
 };
 
 const reduceDeleteSucceeded = (state, action) => {
@@ -34,13 +41,14 @@ const reduceDeleteSucceeded = (state, action) => {
   return index !== -1 ? state.delete(index) : state;
 };
 
-// const reduceUpdate = (state, action) => {
-//   const index = state.findIndex(m => m.id === action.payload.id);
-//   if (index !== -1) {
-//     return state.update(index, m => m.set('text', action.payload.text));
-//   }
-//   return state;
-// };
+const reduceUpdateSucceeded = (state, action) => {
+  const { message } = action.payload;
+  const index = state.findIndex(m => m.id === message.id);
+  if (index !== -1) {
+    return state.update(index, m => m.set('text', message.text));
+  }
+  return state;
+};
 
 const reduceFetchSucceeded = (state, action) => {
   return List(action.payload.data.map(m => new Message(m)));
@@ -48,22 +56,16 @@ const reduceFetchSucceeded = (state, action) => {
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-    case types.SAVE_SUCCEEDED:
-      return state.push(new Message(action.payload.message));
+    case types.CREATE_SUCCEEDED: return reduceCreateSucceeded(state, action);
+    case types.UPDATE_SUCCEEDED: return reduceUpdateSucceeded(state, action);
     case types.DELETE: return reduceDelete(state, action);
     case types.DELETE_SUCCEEDED: return reduceDeleteSucceeded(state, action);
-    // case types.UPDATE: return reduceUpdate(state, action);
     case types.FETCH_SUCCEEDED: return reduceFetchSucceeded(state, action);
     default: return state;
   }
 }
 
 // Action creators
-
-// const update = (id, text) => ({
-//   type: types.UPDATE,
-//   payload: { id, text }
-// });
 
 const fetch = () => ({
   type: types.FETCH,
@@ -94,22 +96,44 @@ const deleteFailed = error => ({
   payload: { error },
 });
 
-const save = ({text, parentId, author}) => ({
-  type: types.SAVE,
+const create = ({text, parentId, author}) => ({
+  type: types.CREATE,
   payload: {
     text,
-    parentId,
     author,
+    parentId,
   },
 });
 
-const saveSucceeded = message => ({
-  type: types.SAVE_SUCCEEDED,
+const createSucceeded = message => ({
+  type: types.CREATE_SUCCEEDED,
   payload: { message },
 });
 
-const saveFailed = error => ({
-  type: types.SAVE_FAILED,
+const createFailed = error => ({
+  type: types.CREATE_FAILED,
+  payload: { error },
+});
+
+// It should be possible to update with only the id and the text
+// But json-server merge updates by dropping missing keys
+const update = ({id, text, author, parentId}) => ({
+  type: types.UPDATE,
+  payload: {
+    id,
+    text,
+    author,
+    parentId,
+  },
+});
+
+const updateSucceeded = message => ({
+  type: types.UPDATE_SUCCEEDED,
+  payload: { message },
+});
+
+const updateFailed = error => ({
+  type: types.UPDATE_FAILED,
   payload: { error },
 });
 
@@ -117,12 +141,15 @@ export const actions = {
   fetch,
   fetchSucceeded,
   fetchFailed,
-  save,
-  saveSucceeded,
-  saveFailed,
+  create,
+  createSucceeded,
+  createFailed,
   delete: myDelete,
   deleteSucceeded,
   deleteFailed,
+  update,
+  updateSucceeded,
+  updateFailed,
 };
 
 // Selectors

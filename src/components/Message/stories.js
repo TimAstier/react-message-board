@@ -28,7 +28,7 @@ storiesOf('MessageButton', module)
 
 storiesOf('Message', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('loading', () => <Message loading={true} />)
+  .add('deleting', () => <Message deleting={true} />)
   .add('saving', () => <Message saving={true} />)
   .add('short text', () => (
     <Message

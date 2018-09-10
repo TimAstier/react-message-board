@@ -5,7 +5,7 @@ const MessageRecord = Immutable.Record({
   text: '',
   author: null,
   parentId: null,
-  loading: false,
+  deleting: false,
 });
 
 class Message extends MessageRecord {}

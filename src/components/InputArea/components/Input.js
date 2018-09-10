@@ -42,8 +42,8 @@ const Initial = props => {
           handleClick={props.handleCancelClick}
         />
         <Button
-          label="Save"
-          handleClick={props.handleSaveClick}
+          label={props.primaryLabel}
+          handleClick={props.handlePrimaryClick}
           disabled={props.text.length === 0}
         />
       </ButtonsWrapper>
@@ -52,10 +52,11 @@ const Initial = props => {
 };
 
 Initial.propTypes = {
+  primaryLabel: PropTypes.string.isRequired,
   charactersCountLabel: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  handleSaveClick: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
+  handlePrimaryClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
   isMessageChild: PropTypes.bool,
 };

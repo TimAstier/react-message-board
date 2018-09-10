@@ -31,13 +31,22 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         parentId: action.payload.message.id,
         status: 'new',
       });
+    case types.CLICKED_EDIT:
+      return INITIAL_STATE.merge({
+        messageId: action.payload.message.id,
+        text: action.payload.message.text,
+        status: 'edit',
+      });
     case types.SET_TEXT:
       if (action.payload.text.length <= MAX_MESSAGE_LENGTH) {
         return state.set('text', action.payload.text);
       }
       return state;
-    case messagesTypes.SAVE: return state.set('status', 'saving');
-    case messagesTypes.SAVE_SUCCEEDED:
+    case messagesTypes.CREATE:
+    case messagesTypes.UPDATE:
+      return state.set('status', 'saving');
+    case messagesTypes.CREATE_SUCCEEDED:
+    case messagesTypes.UPDATE_SUCCEEDED:
       return state.merge({status: 'initial', text: ''});
     case types.CLICKED_CANCEL:
     case authTypes.SET_CURRENT_USER_ID: return INITIAL_STATE;

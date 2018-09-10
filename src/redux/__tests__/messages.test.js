@@ -13,12 +13,12 @@ describe('messages duck', () => {
     it('returns the initial state', () => {
       expect(reducer(undefined, {})).toEqual(INITIAL_STATE);
     });
-    describe('SAVE_SUCCEEDED action', () => {
+    describe('CREATE_SUCCEEDED action', () => {
       it('adds a message in the List', () => {
         const message = new Message();
         const nextState = reducer(
           INITIAL_STATE,
-          actions.saveSucceeded(new Message(message))
+          actions.createSucceeded(new Message(message))
         );
         const expectedState = List([message]);
         expect(selectors.getMessages(nextState)).toEqual(expectedState);
@@ -27,19 +27,19 @@ describe('messages duck', () => {
         const initialState = List([messageA]);
         const nextState = reducer(
           initialState,
-          actions.saveSucceeded(messageB)
+          actions.createSucceeded(messageB)
         );
         const expectedState = List([messageA, messageB]);
         expect(selectors.getMessages(nextState)).toEqual(expectedState);
       });
     });
-    describe('handles DELETE_SUCCEEDED', () => {
+    it('handles DELETE_SUCCEEDED', () => {
       const initialState = List([messageA, messageB, messageC]);
       const nextState = reducer(initialState, actions.deleteSucceeded(1));
       const expectedState = List([messageB, messageC]);
       expect(selectors.getMessages(nextState)).toEqual(expectedState);
     });
-    describe('handles DELETE', () => {
+    it('handles DELETE', () => {
       const initialState = List([
         messageA,
         messageB,
@@ -48,24 +48,27 @@ describe('messages duck', () => {
       const nextState = reducer(initialState, actions.delete(2));
       const expectedState = List([
         messageA,
-        messageB.set('loading', true),
+        messageB.set('deleting', true),
         messageC,
       ]);
       expect(selectors.getMessages(nextState)).toEqual(expectedState);
     });
-    // describe('UPDATE action', () => {
-    //   it('updates a message', () => {
-    //     const messageA = new Message({id: 1, text: 'I like pancakes'});
-    //     const messageB = new Message({id: 2, text: 'Not me'});
-    //     const initialState = List([ messageA, messageB ]);
-    //     const action = actions.update(2, 'Me too');
-    //     const nextState = reducer(initialState, action);
-    //     const expectedState = List(
-    //       [ messageA, new Message({id: 2, text: 'Me too'}) ]
-    //     );
-    //     expect(selectors.getMessages(nextState)).toEqual(expectedState);
-    //   });
-    // });
+    it('handles UPDATE_SUCCEEDED', () => {
+      it('updates a message', () => {
+        const messageD = new Message({id: 1, text: 'I like pancakes'});
+        const messageE = new Message({id: 2, text: 'Not me'});
+        const initialState = List([messageD, messageE]);
+        const action = actions.updateSucceeded({
+          id: 2,
+          text: 'Me too',
+        });
+        const nextState = reducer(initialState, action);
+        const expectedState = List(
+          [messageD, new Message({id: 2, text: 'Me too'})]
+        );
+        expect(selectors.getMessages(nextState)).toEqual(expectedState);
+      });
+    });
   });
   describe('selectors', () => {
     describe('getThreads', () => {

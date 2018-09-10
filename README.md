@@ -1,27 +1,28 @@
 # React Message Board
 
-## \** 🔨 WORK IN PROGRESS 🔨 \**
-
 ## Description
 Prototype of a web-based message board built with React and Redux.  
-This is a coding exercise to practice front-end development.
+This is a coding challenge to practice front-end development.
 
-## TODO
+## Challenge requirements
 
-- [ ] Edit message
-- [ ] Save / Cancel input with ESC / Enter
-- [ ] Smooth animations when adding / deleting?
+- [x] a user can create a message in the service
+- [x] a user can create a child-message in the service
+- [x] the same user can modify their message
+- [x] the same user can delete their message
+- [x] a user can view any message available
+- [ ] add tests to critical places of the code (Optional)
+  - [x] tests for redux
+  - [ ] tests for sagas
+    - [x] UI - manual testing via Storybook
+    - [ ] UI - structural testing (jest's snapshot testing)
+    - [ ] UI - interaction testing (enzyme)
 
-## Requirements
+## Installation
 
-- [x] a client can create a message in the service
-- [x] a client can create a child-message in the service
-- [ ] the same client can modify their message
-- [x] the same client can delete their message
-- [x] a client can view any message available
-- [ ] add test to critical places of the code (OPTIONAL)
+You need to run both the *client* and the *mock api* (see below) to get React Message Board running on your local machine.
 
-## Running the app
+### Running the client
 
 ```sh
 # Clone the repository
@@ -37,17 +38,15 @@ $ npm start
 # Opens a browser tab at http://localhost:3000/
 ```
 
-## Running the mock api
+### Running the mock api
 
 This prototype app has been developed with a mock api powered by [json-server](https://github.com/typicode/json-server).  
-You need to run the mock api in parallel with the app in order to get some data.
 
 ```sh
 # Run the mock api
 $ npm run mock-api
 
 # The mock server should be running on http://localhost:3004
-# You can use tools such as Postman to send requests to the mock api
 ```
 
 ## Mock api
@@ -56,42 +55,60 @@ The mock api is very basic. It handles the following http requests:
 
 ### GET /messages  
 ```
-Response:
-{
+Response: {
   result: [{
   	id: (number),
-  	message: (string),
+  	text: (string),
   	parentId: (number),
   	author: (number),
   }]
 }
+
+status: 200
 ```
 
 ### POST /messages
 ```
-Request:
-{
-  message: (string),
+Request: {
+  text: (string),
   parentId: (number),
   author: (number)
 }
 
-Response: 204
+Response: {
+  id: (number),
+  text: (string),
+  parentId: (number),
+  author: (number)
+}
+
+status: 201
 ```
 
 ### PUT /messages/{id}
 ```
-Request:
-{
-	message: (string)
+Request: {
+  id: (number),
+  text: (string),
+  parentId: (number),
+  author: (number)
 }
 
-Response: 204
+Response: {
+  id: (number),
+  text: (string),
+  parentId: (number),
+  author: (number)  
+}
+
+status: 200
 ```
 
 ### DELETE /messages/{id}
 ```
-Response: 204
+Response: {}
+
+status: 200
 ```
 
 ### Mock Api Configuration
@@ -130,7 +147,7 @@ $ npm run build
 $ npm run test
 ```
 
-### ESLint (eslint-config-react-app)
+### ESLint
 ```sh
 $ npm run lint
 
