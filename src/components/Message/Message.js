@@ -82,7 +82,7 @@ class Message extends React.Component {
         { children === undefined &&
           <Sidebar>
             <div>
-              { avatar && !deleting &&
+              { avatar && !saving && !deleting &&
                 <AvatarImg src={avatar} size={25} />
               }
             </div>
@@ -93,7 +93,6 @@ class Message extends React.Component {
               />
             }
           </Sidebar>
-
         }
         {this.renderContent()}
         { children === undefined &&
