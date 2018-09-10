@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 `;
 
 class Auth extends React.Component{
+
   _renderAvatars() {
     const Avatars = [];
     for (let key in USERS) {

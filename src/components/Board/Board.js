@@ -26,7 +26,7 @@ const SpinnerWrapper = styled.div`
 
 class Board extends React.Component {
   
-  renderThreads() {
+  _renderThreads() {
     const { threads } = this.props;
     return threads
       ? threads.map((thread, i) => {
@@ -47,7 +47,7 @@ class Board extends React.Component {
     return(
       <Wrapper>
         { !this.props.loading
-          ? this.renderThreads()
+          ? this._renderThreads()
           : <SpinnerWrapper><Spinner size={145}/></SpinnerWrapper>
         }
       </Wrapper>

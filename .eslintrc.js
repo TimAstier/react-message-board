@@ -8,5 +8,6 @@ module.exports = {
       "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
       "semi": [ 2, "always" ],
       "react/jsx-boolean-value": [2, "always"],
+      "react/sort-comp": [1],
     }
 };

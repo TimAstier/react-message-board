@@ -6,6 +6,7 @@ import { actions as authActions } from '../../redux/auth';
 import s from '../../rootSelectors';
 
 class Auth extends React.Component {
+  
   render() {
     return (
       <AuthComponent
@@ -28,6 +29,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    setCurrentUserId: authActions.setCurrentUserId
+    setCurrentUserId: authActions.setCurrentUserId,
   }
 )(Auth);

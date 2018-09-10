@@ -40,13 +40,13 @@ class Spinner extends Component {
 }
 
 Spinner.defaultProps = {
-  src: spinner
+  src: spinner,
 };
 
 Spinner.propTypes = {
   size: propTypes.number,
   delay: propTypes.number,
-  src: propTypes.string
+  src: propTypes.string,
 };
 
 export default Spinner;
