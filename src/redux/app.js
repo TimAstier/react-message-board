@@ -27,7 +27,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 const setLoading = loading => ({
   type: types.SET_LOADING,
-  payload: { loading }
+  payload: { loading },
 });
 
 export const actions = {

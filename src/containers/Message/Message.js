@@ -34,7 +34,7 @@ Message.propTypes = {
   clickedEdit: PropTypes.func.isRequired,
   clickedRespond: PropTypes.func.isRequired,
   delete: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({

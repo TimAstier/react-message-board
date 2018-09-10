@@ -57,7 +57,7 @@ Initial.propTypes = {
   handleSaveClick: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
-  isMessageChild: PropTypes.bool
+  isMessageChild: PropTypes.bool,
 };
 
 export default Initial;

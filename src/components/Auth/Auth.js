@@ -40,12 +40,12 @@ class Auth extends React.Component{
 }
 
 Auth.defaultProps = {
-  handleAvatarClick: id => console.log(`Avatar id: ${id} clicked!`)
+  handleAvatarClick: id => console.log(`Avatar id: ${id} clicked!`),
 };
 
 Auth.propTypes = {
   currentUserId: PropTypes.number,
-  handleAvatarClick: PropTypes.func.isRequired
+  handleAvatarClick: PropTypes.func.isRequired,
 };
 
 export default Auth;

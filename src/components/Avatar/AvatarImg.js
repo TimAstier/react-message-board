@@ -31,7 +31,7 @@ AvatarImg.propTypes = {
   selected: PropTypes.bool,
   src: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  size: PropTypes.number
+  size: PropTypes.number,
 };
 
 export default AvatarImg;

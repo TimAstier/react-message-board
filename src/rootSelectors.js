@@ -3,7 +3,7 @@ import * as selectors from './selectors';
 
 const rootSelectors = {
   ...duckSelectors,
-  ...selectors
+  ...selectors,
 };
 
 export default rootSelectors;

@@ -4,13 +4,13 @@ import { createSelector } from 'reselect';
 // Types
 
 export const types = {
-  SET_CURRENT_USER_ID: 'login/SET_CURRENT_USER_ID'
+  SET_CURRENT_USER_ID: 'login/SET_CURRENT_USER_ID',
 };
 
 // Reducer
 
 export const INITIAL_STATE = Map({
-  currentUserId: null
+  currentUserId: null,
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -25,11 +25,11 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 
 const setCurrentUserId = id => ({
   type: types.SET_CURRENT_USER_ID,
-  payload: { id }
+  payload: { id },
 });
 
 export const actions = {
-  setCurrentUserId
+  setCurrentUserId,
 };
 
 // Selectors
@@ -42,5 +42,5 @@ const getIsLoggedIn = createSelector(
 
 export const selectors = {
   getCurrentUserId,
-  getIsLoggedIn
+  getIsLoggedIn,
 };

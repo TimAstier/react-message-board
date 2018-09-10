@@ -66,32 +66,32 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // });
 
 const fetch = () => ({
-  type: types.FETCH
+  type: types.FETCH,
 });
 
 const fetchSucceeded = data => ({
   type: types.FETCH_SUCCEEDED,
-  payload: { data }
+  payload: { data },
 });
 
 const fetchFailed = error => ({
   type: types.FETCH_FAILED,
-  payload: { error }
+  payload: { error },
 });
 
 const myDelete = id => ({
   type: types.DELETE,
-  payload: { id }
+  payload: { id },
 });
 
 const deleteSucceeded = id => ({
   type: types.DELETE_SUCCEEDED,
-  payload: { id }
+  payload: { id },
 });
 
 const deleteFailed = error => ({
   type: types.DELETE_FAILED,
-  payload: { error }
+  payload: { error },
 });
 
 const save = ({text, parentId, author}) => ({
@@ -99,18 +99,18 @@ const save = ({text, parentId, author}) => ({
   payload: {
     text,
     parentId,
-    author
-  }
+    author,
+  },
 });
 
 const saveSucceeded = message => ({
   type: types.SAVE_SUCCEEDED,
-  payload: { message }
+  payload: { message },
 });
 
 const saveFailed = error => ({
   type: types.SAVE_FAILED,
-  payload: { error }
+  payload: { error },
 });
 
 export const actions = {

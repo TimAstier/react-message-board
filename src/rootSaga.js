@@ -5,6 +5,6 @@ import watchMessagesSagas from './sagas/messages';
 
 export default function* rootSaga() {
   yield all([
-    watchMessagesSagas()
+    watchMessagesSagas(),
   ]);
 }

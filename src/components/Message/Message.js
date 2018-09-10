@@ -75,7 +75,7 @@ class Message extends React.Component{
       opacity,
       handleDeleteClick,
       handleEditClick,
-      handleRespondClick
+      handleRespondClick,
     } = this.props;
     return (
       <Wrapper backgroundColor={this._backgroundColor()} opacity={opacity}>
@@ -130,11 +130,11 @@ Message.propTypes = {
   children: PropTypes.node,
   opacity: PropTypes.number,
   loading: PropTypes.bool,
-  saving: PropTypes.bool
+  saving: PropTypes.bool,
 };
 
 Message.defaultProps = {
-  opacity: 1
+  opacity: 1,
 };
 
 export default Message;

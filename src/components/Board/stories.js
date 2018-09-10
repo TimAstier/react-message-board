@@ -9,35 +9,35 @@ const messageA = new Message({
   id: 1,
   text: 'Who wants "pain au chocolat" for breakfast?',
   author: 1,
-  parentId: null
+  parentId: null,
 });
 
 const messageB = new Message({
   id: 2,
   text: 'Me please!',
   author: 2,
-  parentId: 1
+  parentId: 1,
 });
 
 const messageC = new Message({
   id: 3,
   text: 'OK, will bring some tomorrow.',
   author: 1,
-  parentId: 1
+  parentId: 1,
 });
 
 const messageD = new Message({
   id: 4,
   text: 'I don\'t like pains au chocolat.',
   author: 3,
-  parentId: null
+  parentId: null,
 });
 
 const messageE = new Message({
   id: 5,
   text: 'Me neither...',
   author: 4,
-  parentId: 4
+  parentId: 4,
 });
 
 const manyMessages = [];
@@ -49,7 +49,7 @@ _.times(15, (i) => {
       id: i + 2,
       text: 'Me please!',
       author: i + 2,
-      parentId: 1
+      parentId: 1,
     })
   );
 });

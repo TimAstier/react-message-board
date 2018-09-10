@@ -92,7 +92,7 @@ InputArea.propTypes = {
     'initial',
     'new',
     'edit',
-    'saving'
+    'saving',
   ]).isRequired,
   charactersCountLabel: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
@@ -101,7 +101,7 @@ InputArea.propTypes = {
   handleSaveClick: PropTypes.func.isRequired,
   handleTextareaChange: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  isMessageChild: PropTypes.bool
+  isMessageChild: PropTypes.bool,
 };
 
 export default InputArea;

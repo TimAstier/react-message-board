@@ -48,26 +48,26 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 // Action creators
 
 const clickedCancel = () => ({
-  type: types.CLICKED_CANCEL
+  type: types.CLICKED_CANCEL,
 });
 
 const clickedEdit = message => ({
   type: types.CLICKED_EDIT,
-  payload: { message }
+  payload: { message },
 });
 
 const clickedNew = () => ({
-  type: types.CLICKED_NEW
+  type: types.CLICKED_NEW,
 });
 
 const clickedRespond = message => ({
   type: types.CLICKED_RESPOND,
-  payload: { message }
+  payload: { message },
 });
 
 const setText = text => ({
   type: types.SET_TEXT,
-  payload: { text }
+  payload: { text },
 });
 
 export const actions = {

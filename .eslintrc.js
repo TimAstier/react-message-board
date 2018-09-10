@@ -9,5 +9,6 @@ module.exports = {
       "semi": [ 2, "always" ],
       "react/jsx-boolean-value": [2, "always"],
       "react/sort-comp": [1],
+      "comma-dangle": ["error", "always-multiline"],
     }
 };

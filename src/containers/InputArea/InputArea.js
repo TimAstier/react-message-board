@@ -20,7 +20,7 @@ class InputArea extends React.Component {
         handleSaveClick={() => this.props.save({
           text: this.props.text,
           parentId: this.props.parentId,
-          author: this.props.currentUserId
+          author: this.props.currentUserId,
         })}
         handleTextareaChange={e => this.props.setText(e.target.value)}
         isMessageChild={this.props.parentId !== null}
@@ -34,7 +34,7 @@ InputArea.propTypes = {
     'initial',
     'new',
     'edit',
-    'saving'
+    'saving',
   ]).isRequired,
   charactersCountLabel: PropTypes.string.isRequired,
   clickedCancel: PropTypes.func.isRequired,

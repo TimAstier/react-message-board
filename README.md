@@ -9,6 +9,7 @@ This is a coding exercise to practice front-end development.
 ## TODO
 
 - [ ] Edit message
+- [ ] Save / Cancel input with ESC / Enter
 - [ ] Smooth animations when adding / deleting?
 
 ## Requirements

@@ -41,13 +41,13 @@ describe('messages duck', () => {
       const initialState = List([
         messageA,
         messageB,
-        messageC
+        messageC,
       ]);
       const nextState = reducer(initialState, actions.delete(2));
       const expectedState = List([
         messageA,
         messageB.set('loading', true),
-        messageC
+        messageC,
       ]);
       expect(selectors.getMessages(nextState)).toEqual(expectedState);
     });
@@ -76,7 +76,7 @@ describe('messages duck', () => {
         const state = List([ messageB, messageA, messageC, messageE, messageD ]);
         const threads = [
           [ messageA, messageB, messageC ],
-          [ messageD, messageE ]
+          [ messageD, messageE ],
         ];
         expect(selectors.getThreads(state)).toEqual(threads);
       });

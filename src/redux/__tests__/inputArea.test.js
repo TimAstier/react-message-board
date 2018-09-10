@@ -56,7 +56,7 @@ describe('inputArea duck', () => {
         messageId: null,
         parentId: 1,
         text: '',
-        status: 'new'
+        status: 'new',
       });
       expect(reducer(state, action)).toEqual(expectedState);
     });
@@ -65,14 +65,14 @@ describe('inputArea duck', () => {
         messageId: 1,
         parentId: 2,
         text: 'whatever',
-        status: 'initial'
+        status: 'initial',
       });
       const action = inputAreaActions.clickedNew();
       const expectedState = Map({
         messageId: null,
         parentId: null,
         text: '',
-        status: 'new'
+        status: 'new',
       });
       expect(reducer(state, action)).toEqual(expectedState);
     });
@@ -81,14 +81,14 @@ describe('inputArea duck', () => {
         messageId: null,
         parentId: 2,
         text: 'whatever',
-        status: 'new'
+        status: 'new',
       });
       const action = inputAreaActions.clickedCancel();
       const expectedState = Map({
         messageId: null,
         parentId: null,
         text: '',
-        status: 'initial'
+        status: 'initial',
       });
       expect(reducer(state, action)).toEqual(expectedState);
     });

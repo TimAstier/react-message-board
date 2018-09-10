@@ -9,21 +9,21 @@ const messageA = new Message({
   id: 1,
   text: 'Who wants "pain au chocolat" for breakfast?',
   author: 1,
-  parentId: null
+  parentId: null,
 });
 
 const messageB = new Message({
   id: 2,
   text: 'Me please!',
   author: 2,
-  parentId: 1
+  parentId: 1,
 });
 
 const messageC = new Message({
   id: 3,
   text: 'OK, will bring some tomorrow.',
   author: 1,
-  parentId: 1
+  parentId: 1,
 });
 
 const messageD = new Message({
@@ -36,7 +36,7 @@ const messageD = new Message({
   the height limit and see if it scrolls.
   `,
   author: 1,
-  parentId: null
+  parentId: null,
 });
 
 const manyMessages = [];
@@ -47,7 +47,7 @@ times(15, (i) => {
       id: i + 1,
       text: 'Me please!',
       author: 1,
-      parentId: 1
+      parentId: 1,
     })
   );
 });
