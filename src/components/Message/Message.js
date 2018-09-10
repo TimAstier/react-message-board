@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   display: flex;
   border-radius: 10px;
   opacity: ${props => props.opacity};
+  max-height: 250px;
 `;
 
 const Sidebar = styled.div`
@@ -28,11 +29,16 @@ const TextWrapper = styled.div`
   flex-grow: 1;
   width: 180px;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   position: relative;
   display: block;
   word-wrap: break-word;
+  font-family: Cambria;
+  font-size: 18px;
+  overflow-y: scroll;
 `;
 
 const SpinnerWrapper = styled.div`
@@ -59,6 +65,7 @@ class Message extends React.Component{
   
   render() {
     const {
+      children,
       avatar,
       saving,
       loading,
@@ -72,35 +79,40 @@ class Message extends React.Component{
     } = this.props;
     return (
       <Wrapper backgroundColor={this._backgroundColor()} opacity={opacity}>
-        <Sidebar>
-          <div>
-            { avatar && !loading &&
-              <AvatarImg src={avatar} size={25}/>
+        { children === undefined &&
+          <Sidebar>
+            <div>
+              { avatar && !loading &&
+                <AvatarImg src={avatar} size={25}/>
+              }
+            </div>
+            { !saving && !loading && !noIcons && !isChild &&
+              <MessageButton
+                icon="hookedArrow"
+                handleClick={handleRespondClick}
+              />
             }
-          </div>
-          { !saving && !loading && !noIcons && !isChild &&
-            <MessageButton
-              icon="hookedArrow"
-              handleClick={handleRespondClick}
-            />
-          }
-        </Sidebar>
+          </Sidebar>
+
+        }
         {this._renderContent()}
-        <Sidebar>
-          {
-            !saving && !loading && !noIcons && belongsToCurrentUser &&
-            <Fragment>
-              <MessageButton
-                icon="xmark"
-                handleClick={handleDeleteClick}
-              />
-              <MessageButton
-                icon="pencil"
-                handleClick={handleEditClick}
-              />
-            </Fragment>
-          }
-        </Sidebar>
+        { children === undefined &&
+          <Sidebar>
+            {
+              !saving && !loading && !noIcons && belongsToCurrentUser &&
+              <Fragment>
+                <MessageButton
+                  icon="xmark"
+                  handleClick={handleDeleteClick}
+                />
+                <MessageButton
+                  icon="pencil"
+                  handleClick={handleEditClick}
+                />
+              </Fragment>
+            }
+          </Sidebar>
+        }
       </Wrapper>
     );
   } 

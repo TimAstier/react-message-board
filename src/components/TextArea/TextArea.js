@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledTextarea = styled.textarea`
+  box-sizing: border-box;
+  height: 100px;
   outline: none;
   resize: none;
   border: ${props => props.noBorder ? 'none' : '1px solid black'};
   background-color: transparent;
-  max-width: 180px;
-	padding: 5px;
-  font-size: 14px;
-	font-family: Tahoma, sans-serif;
+  width: 100%;
+  padding: 5px;
+  padding-top: 25px;
   text-align: center;
+  font-family: Cambria;
+  font-size: 18px;
 `;
 
 const Textarea = props => {

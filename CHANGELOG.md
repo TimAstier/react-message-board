@@ -17,6 +17,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Security
 ---
 
+## [0.2.2] 2018-09-10
+
+### Added
+- 
+
+### Fixed
+- Textarea display
+
 ## [0.2.1] 2018-09-09
 
 ### Added

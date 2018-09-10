@@ -9,7 +9,6 @@ This is a coding exercise to practice front-end development.
 ## TODO
 
 - [ ] Edit message
-- [ ] Fix textarea
 - [ ] Smooth animations when adding / deleting?
 
 ## Requirements

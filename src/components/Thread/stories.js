@@ -32,7 +32,8 @@ const messageD = new Message({
   This is such a long text that I have no idea how it can fit
   into a single message but we will see how it goes. It needs
   to be even longer to break the minimum height so I'm adding
-  even more meaningless text.
+  even more meaningless text. And even more to finally break
+  the height limit and see if it scrolls.
   `,
   author: 1,
   parentId: null
@@ -45,7 +46,7 @@ times(15, (i) => {
     new Message({
       id: i + 1,
       text: 'Me please!',
-      author: i + 1,
+      author: 1,
       parentId: 1
     })
   );
