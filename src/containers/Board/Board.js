@@ -7,11 +7,10 @@ import s from '../../rootSelectors';
 import { actions as messagesActions } from '../../redux/messages';
 
 class Board extends React.Component {
-  
   componentDidMount() {
     this.props.fetchMessages();
   }
-  
+
   render() {
     return (
       <BoardComponent

@@ -30,20 +30,19 @@ const MessageWrapper = styled.div`
 `;
 
 class Thread extends React.Component {
-  
   renderChildMessages() {
-    return this.props.childMessages.map(m =>
+    return this.props.childMessages.map(m => (
       <MessageWrapper key={m.id}>
         <Message message={m} loading={this.props.parentMessage.loading} />
       </MessageWrapper>
-    );
+    ));
   }
-  
+
   render() {
     return (
       <Wrapper>
         <ParentMessageWrapper>
-          <Message message={this.props.parentMessage}/>
+          <Message message={this.props.parentMessage} />
         </ParentMessageWrapper>
         <ChildMessagesWrapper>
           {this.renderChildMessages()}
@@ -51,7 +50,7 @@ class Thread extends React.Component {
       </Wrapper>
     );
   }
-};
+}
 
 Thread.propTypes = {
   parentMessage: PropTypes.instanceOf(MessageModel).isRequired,

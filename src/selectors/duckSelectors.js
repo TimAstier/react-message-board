@@ -4,7 +4,7 @@
 
 import bindSelectors from '../helpers/bindSelectors';
 
-//TODO: DRY this
+// TODO: DRY this
 
 import * as fromApp from '../redux/app';
 import * as fromAuth from '../redux/auth';

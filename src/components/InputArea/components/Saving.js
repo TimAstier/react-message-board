@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Message } from '../../.';
+import { Message } from '../..';
 
 const MessageWrapper = styled.div`
   margin-top: 40px;
@@ -11,7 +11,7 @@ const MessageWrapper = styled.div`
 
 const Saving = ({ isMessageChild }) => (
   <MessageWrapper>
-    <Message saving={true} isChild={isMessageChild}/>
+    <Message saving={true} isChild={isMessageChild} />
   </MessageWrapper>
 );
 

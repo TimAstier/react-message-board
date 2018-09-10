@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Button, Message, Textarea } from '../../.';
+import { Button, Message, Textarea } from '../..';
 
 const SubWrapper = styled.div`
   margin-bottom: 20px;

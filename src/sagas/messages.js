@@ -6,8 +6,7 @@ function* fetch() {
   try {
     const response = yield call(Api.get, '/messages');
     yield put(actions.fetchSucceeded(response.data));
-  }
-  catch(error) {
+  } catch (error) {
     yield put(actions.fetchFailed(error));
   }
 }
@@ -19,8 +18,7 @@ function* save(action) {
       Api.post, '/messages', { text, parentId, author }
     );
     yield put(actions.saveSucceeded(response.data));
-  }
-  catch(error) {
+  } catch (error) {
     yield put(actions.saveFailed(error));
   }
 }
@@ -38,8 +36,7 @@ function* myDelete(action) {
     } else {
       yield put(actions.deleteFailed());
     }
-  }
-  catch(error) {
+  } catch (error) {
     yield put(actions.deleteFailed(error));
   }
 }

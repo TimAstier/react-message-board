@@ -6,7 +6,6 @@ import { actions as authActions } from '../../redux/auth';
 import s from '../../rootSelectors';
 
 class Auth extends React.Component {
-  
   render() {
     return (
       <AuthComponent

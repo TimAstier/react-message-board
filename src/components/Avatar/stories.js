@@ -10,7 +10,7 @@ const renderAvatar = id => {
       name={USERS[id].name}
       src={USERS[id].avatar}
       onClick={() => console.log('clicked!')}
-    />  
+    />
   );
 };
 
@@ -20,31 +20,31 @@ storiesOf('Avatar', module)
   .add('userId: 3', () => renderAvatar(3))
   .add('userId: 4', () => renderAvatar(4))
   .add('userId: 5', () => renderAvatar(5))
-  .add('selected', () =>
+  .add('selected', () => (
     <Avatar
       selected={true}
       name={USERS[1].name}
       src={USERS[1].avatar}
       onClick={() => console.log('clicked!')}
     />
-  );
-  
+  ));
+
 storiesOf('AvatarImg', module)
   .add('size: 25', () => (
     <AvatarImg
       src={USERS[1].avatar}
       size={25}
-    />  
+    />
   ))
   .add('selected: true', () => (
     <AvatarImg
       src={USERS[1].avatar}
       selected={true}
-    />  
+    />
   ))
   .add('onClick', () => (
     <AvatarImg
       src={USERS[1].avatar}
       onClick={() => console.log('onClick')}
-    />  
+    />
   ));

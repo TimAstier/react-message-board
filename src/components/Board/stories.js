@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import _ from 'lodash';
 import Provider from '../../helpers/testComponents/Provider';
 import { Message } from '../../models';
 import Board from './Board';
-import _ from 'lodash';
 
 const messageA = new Message({
   id: 1,
@@ -54,50 +54,50 @@ _.times(15, (i) => {
   );
 });
 
-_.times(8, (i) => {
+_.times(8, () => {
   manyThreads.push([messageA, ...manyMessages]);
 });
 
 storiesOf('Board', module)
   .addDecorator(story => <Provider story={story()} />)
-  .add('loading: true', () =>
+  .add('loading: true', () => (
     <Board
       loading={true}
     />
-  )
-  .add('empty: true', () =>
+  ))
+  .add('empty: true', () => (
     <Board
       threads={[]}
       currentUserId={1}
     />
-  )
-  .add('one thread', () =>
+  ))
+  .add('one thread', () => (
     <Board
       threads={[[messageA, messageB, messageC]]}
       currentUserId={1}
     />
-  )
-  .add('one thread with no childMessages', () =>
+  ))
+  .add('one thread with no childMessages', () => (
     <Board
       threads={[[messageA]]}
       currentUserId={1}
     />
-  )
-  .add('two threads', () =>
+  ))
+  .add('two threads', () => (
     <Board
       threads={[[messageA, messageB, messageC], [messageD, messageE]]}
       currentUserId={1}
     />
-  )
-  .add('one long thread', () =>
+  ))
+  .add('one long thread', () => (
     <Board
       threads={[[messageA, ...manyMessages]]}
       currentUserId={1}
     />
-  )
-  .add('many threads', () =>
+  ))
+  .add('many threads', () => (
     <Board
       threads={manyThreads}
       currentUserId={1}
     />
-  );
+  ));

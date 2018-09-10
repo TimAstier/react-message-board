@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Message, Button } from '../../.';
+import { Message, Button } from '../..';
 
 const MessageWrapper = styled.div`
   margin-top: 40px;

@@ -1,10 +1,12 @@
-import reducer, { INITIAL_STATE, actions, selectors } from '../messages';
+/* eslint-disable no-undef */
+
 import { List } from 'immutable';
+import reducer, { INITIAL_STATE, actions, selectors } from '../messages';
 import { Message } from '../../models';
 
 const messageA = new Message({id: 1});
-const messageB = new Message({id: 2});
-const messageC = new Message({id: 3});
+const messageB = new Message({id: 2, parentId: 1});
+const messageC = new Message({id: 3, parentId: 1});
 
 describe('messages duck', () => {
   describe('reducer', () => {
@@ -18,23 +20,23 @@ describe('messages duck', () => {
           INITIAL_STATE,
           actions.saveSucceeded(new Message(message))
         );
-        const expectedState = List([ message ]);
+        const expectedState = List([message]);
         expect(selectors.getMessages(nextState)).toEqual(expectedState);
       });
       it('adds a message at the end of the List', () => {
-        const initialState = List([ messageA ]);
+        const initialState = List([messageA]);
         const nextState = reducer(
           initialState,
           actions.saveSucceeded(messageB)
         );
-        const expectedState = List([ messageA, messageB ]);
+        const expectedState = List([messageA, messageB]);
         expect(selectors.getMessages(nextState)).toEqual(expectedState);
       });
     });
     describe('handles DELETE_SUCCEEDED', () => {
-      const initialState = List([ messageA, messageB, messageC ]);
+      const initialState = List([messageA, messageB, messageC]);
       const nextState = reducer(initialState, actions.deleteSucceeded(1));
-      const expectedState = List([ messageB, messageC ]);
+      const expectedState = List([messageB, messageC]);
       expect(selectors.getMessages(nextState)).toEqual(expectedState);
     });
     describe('handles DELETE', () => {
@@ -64,28 +66,23 @@ describe('messages duck', () => {
     //     expect(selectors.getMessages(nextState)).toEqual(expectedState);
     //   });
     // });
-  });  
+  });
   describe('selectors', () => {
     describe('getThreads', () => {
       it('returns an array of arrays of Messages', () => {
-        const messageA = new Message({id: 1});
-        const messageB = new Message({id: 2, parentId: 1});
-        const messageC = new Message({id: 3, parentId: 1});
         const messageD = new Message({id: 4});
         const messageE = new Message({id: 5, parentId: 4});
-        const state = List([ messageB, messageA, messageC, messageE, messageD ]);
+        const state = List([messageB, messageA, messageC, messageE, messageD]);
         const threads = [
-          [ messageA, messageB, messageC ],
-          [ messageD, messageE ],
+          [messageA, messageB, messageC],
+          [messageD, messageE],
         ];
         expect(selectors.getThreads(state)).toEqual(threads);
       });
       it('ignores orphan childMessages', () => {
-        const messageA = new Message({id: 1});
-        const messageB = new Message({id: 2, parentId: 1});
-        const messageC = new Message({id: 3, parentId: 2});
-        const state = List([ messageB, messageA, messageC ]);
-        const threads = [[ messageA, messageB ]];
+        const messageF = new Message({id: 3, parentId: 2});
+        const state = List([messageB, messageA, messageF]);
+        const threads = [[messageA, messageB]];
         expect(selectors.getThreads(state)).toEqual(threads);
       });
     });

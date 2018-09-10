@@ -7,7 +7,6 @@ import { InputArea as InputAreaComponent } from '../../components';
 import s from '../../rootSelectors';
 
 class InputArea extends React.Component {
-
   render() {
     return (
       <InputAreaComponent

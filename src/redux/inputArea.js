@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
-import { MAX_MESSAGE_LENGTH } from '../constants';
 import { createSelector } from 'reselect';
+import { MAX_MESSAGE_LENGTH } from '../constants';
 import { types as messagesTypes } from './messages';
 import { types as authTypes } from './auth';
 
@@ -24,7 +24,7 @@ export const INITIAL_STATE = Map({
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
-  switch(action.type) {
+  switch (action.type) {
     case types.CLICKED_NEW: return INITIAL_STATE.set('status', 'new');
     case types.CLICKED_RESPOND:
       return INITIAL_STATE.merge({

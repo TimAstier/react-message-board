@@ -20,7 +20,7 @@ class Spinner extends Component {
   // To avoid setting the state on an unmounted component
   // See: https://stackoverflow.com/questions/32903001/react-setstate-on-unmounted-component
   componentWillUnmount() {
-    this.displayLoader && clearInterval(this.displayLoader);
+    if (this.displayLoader) clearInterval(this.displayLoader);
     this.displayLoader = false;
   }
 

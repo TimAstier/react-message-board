@@ -9,7 +9,6 @@ import { Message as MessageComponent } from '../../components';
 import s from '../../rootSelectors';
 
 class Message extends Component {
-
   render() {
     const { message, currentUserId } = this.props;
     return (

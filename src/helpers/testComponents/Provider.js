@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
-import rootReducer from '../../rootReducer';
 import { createStore } from 'redux';
+import rootReducer from '../../rootReducer';
 
 const store = createStore(rootReducer);
 
+/* eslint-disable-next-line react/prop-types */
 const Provider = ({ story }) => (
   <ReduxProvider store={store}>
     {story}

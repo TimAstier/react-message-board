@@ -14,7 +14,7 @@ export const INITIAL_STATE = Map({
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
-  switch(action.type) {
+  switch (action.type) {
     case types.SET_LOADING:
       return state.set('loading', action.payload.loading);
     case messagesTypes.FETCH_SUCCEEDED:

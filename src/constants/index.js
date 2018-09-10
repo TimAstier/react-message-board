@@ -1,12 +1,12 @@
 export const MAX_MESSAGE_LENGTH = 240;
 
 /** NOTE
-// API_BASE_URL should depend on the environment
-// Use dotenv to define a REACT_APP_API_BASE_URL environment variable
-**/
+API_BASE_URL should depend on the environment
+Use dotenv to define a REACT_APP_API_BASE_URL environment variable
+*/
 export const API_BASE_URL = 'http://localhost:3004';
 
-export const GITHUB_LINK= 'https://github.com/TimAstier/react-message-board';
+export const GITHUB_LINK = 'https://github.com/TimAstier/react-message-board';
 
 // Avatar images from avatars.adorable.io
 export const USERS = {

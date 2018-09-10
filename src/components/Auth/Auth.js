@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Avatar } from '../.';
+import Avatar from '../Avatar/Avatar';
 import { USERS } from '../../constants';
 
 const Wrapper = styled.div`
@@ -12,11 +12,10 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-class Auth extends React.Component{
-
-  _renderAvatars() {
+class Auth extends React.Component {
+  renderAvatars() {
     const Avatars = [];
-    for (let key in USERS) {
+    Object.keys(USERS).forEach((key) => {
       Avatars.push(
         <Avatar
           key={key}
@@ -26,22 +25,18 @@ class Auth extends React.Component{
           onClick={() => this.props.handleAvatarClick(USERS[key].id)}
         />
       );
-    }
+    });
     return Avatars;
-  };
-  
+  }
+
   render() {
     return (
       <Wrapper>
-        {this._renderAvatars()}
+        {this.renderAvatars()}
       </Wrapper>
     );
   }
 }
-
-Auth.defaultProps = {
-  handleAvatarClick: id => console.log(`Avatar id: ${id} clicked!`),
-};
 
 Auth.propTypes = {
   currentUserId: PropTypes.number,

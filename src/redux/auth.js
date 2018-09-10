@@ -14,7 +14,7 @@ export const INITIAL_STATE = Map({
 });
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
-  switch(action.type) {
+  switch (action.type) {
     case types.SET_CURRENT_USER_ID:
       return state.set('currentUserId', action.payload.id);
     default: return state;

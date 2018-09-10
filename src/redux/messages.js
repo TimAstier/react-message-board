@@ -47,7 +47,7 @@ const reduceFetchSucceeded = (state, action) => {
 };
 
 export default function reducer(state = INITIAL_STATE, action = {}) {
-  switch(action.type) {
+  switch (action.type) {
     case types.SAVE_SUCCEEDED:
       return state.push(new Message(action.payload.message));
     case types.DELETE: return reduceDelete(state, action);
@@ -59,7 +59,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
 }
 
 // Action creators
- 
+
 // const update = (id, text) => ({
 //   type: types.UPDATE,
 //   payload: { id, text }

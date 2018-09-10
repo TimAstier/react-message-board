@@ -21,28 +21,30 @@ const GithubLink = () => (
   <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">Github</a>
 );
 
-class InputArea extends React.Component {  
-
-  _renderWelcomeMessage() {
+class InputArea extends React.Component {
+  static renderWelcomeMessage() {
     return (
       <WelcomeMessage>
         <h1>React Message Board</h1>
         <h2>&#8679; Chose an avatar to get started &#8679;</h2>
-        <p>See source on <GithubLink />.
+        <p>
+          See source on
+          <GithubLink />
+          .
         </p>
       </WelcomeMessage>
     );
   }
-  
-  _renderInitial() {
+
+  renderInitial() {
     return (
       <ChildComponents.Initial
         handleNewClick={this.props.handleNewClick}
       />
     );
   }
-  
-  _renderNew() {
+
+  renderNew() {
     return (
       <ChildComponents.New
         charactersCountLabel={this.props.charactersCountLabel}
@@ -54,30 +56,30 @@ class InputArea extends React.Component {
       />
     );
   }
-  
-  _renderEdit() {
+
+  static renderEdit() {
     return (
       <ChildComponents.Edit />
     );
   }
-  
-  _renderSaving() {
+
+  renderSaving() {
     return <ChildComponents.Saving isMessageChild={this.props.isMessageChild} />;
   }
-  
+
   renderChildComponent() {
     if (!this.props.isLoggedIn) {
-      return this._renderWelcomeMessage();
+      return this.renderWelcomeMessage();
     }
-    switch(this.props.status) {
-      case 'initial': return this._renderInitial();
-      case 'new': return this._renderNew();
-      case 'edit': return this._renderEdit();
-      case 'saving': return this._renderSaving();
+    switch (this.props.status) {
+      case 'initial': return this.renderInitial();
+      case 'new': return this.renderNew();
+      case 'edit': return this.renderEdit();
+      case 'saving': return this.renderSaving();
       default: return null;
     }
   }
-  
+
   render() {
     return (
       <Wrapper>

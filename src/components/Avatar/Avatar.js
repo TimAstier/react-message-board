@@ -23,16 +23,16 @@ const Name = styled.div`
   padding-top: 5px;
 `;
 
-const Avatar = props => {
+const Avatar = ({ selected, src, onClick, name }) => {
   return (
     <Wrapper>
       <AvatarImg
-        selected={props.selected}
-        src={props.src}
-        onClick={props.onClick}
+        selected={selected}
+        src={src}
+        onClick={onClick}
       />
-      <Name selected={props.selected} >
-        {props.name}
+      <Name selected={selected}>
+        {name}
       </Name>
     </Wrapper>
   );

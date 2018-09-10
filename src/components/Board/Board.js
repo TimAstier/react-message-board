@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Thread, Spinner } from '../.';
+import Thread from '../Thread/Thread';
+import Spinner from '../Spinner/Spinner';
 import { Message as MessageModel } from '../../models';
 
 const Wrapper = styled.div`
@@ -25,30 +26,29 @@ const SpinnerWrapper = styled.div`
 `;
 
 class Board extends React.Component {
-  
-  _renderThreads() {
+  renderThreads() {
     const { threads } = this.props;
     return threads
-      ? threads.map((thread, i) => {
+      ? threads.map(thread => {
         const [parentMessage, ...childMessages] = thread;
         return (
-          <ThreadWrapper key={i}>
+          <ThreadWrapper key={parentMessage.id}>
             <Thread
               parentMessage={parentMessage}
               childMessages={childMessages}
             />
-            </ThreadWrapper>
+          </ThreadWrapper>
         );
       })
       : null;
   }
 
   render() {
-    return(
+    return (
       <Wrapper>
         { !this.props.loading
-          ? this._renderThreads()
-          : <SpinnerWrapper><Spinner size={145}/></SpinnerWrapper>
+          ? this.renderThreads()
+          : <SpinnerWrapper><Spinner size={145} /></SpinnerWrapper>
         }
       </Wrapper>
     );

@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Spinner, AvatarImg } from '../.';
+import Spinner from '../Spinner/Spinner';
+import AvatarImg from '../Avatar/AvatarImg';
 import MessageButton from './MessageButton';
 
 const Wrapper = styled.div`
@@ -48,21 +49,20 @@ const SpinnerWrapper = styled.div`
   align-items: center;
 `;
 
-class Message extends React.Component{
-  
-  _backgroundColor() {
+class Message extends React.Component {
+  backgroundColor() {
     if (!this.props.saving && this.props.loading) return 'lightgray';
     return this.props.isChild ? '#f1fab3' : '#d5f013';
   }
-  
-  _renderContent() {
+
+  renderContent() {
     const { text, children, loading, saving } = this.props;
     if (loading || saving) return <SpinnerWrapper><Spinner size={55} /></SpinnerWrapper>;
     if (text) return <TextWrapper>{text}</TextWrapper>;
     if (children) return children;
     return null;
   }
-  
+
   render() {
     const {
       children,
@@ -78,12 +78,12 @@ class Message extends React.Component{
       handleRespondClick,
     } = this.props;
     return (
-      <Wrapper backgroundColor={this._backgroundColor()} opacity={opacity}>
+      <Wrapper backgroundColor={this.backgroundColor()} opacity={opacity}>
         { children === undefined &&
           <Sidebar>
             <div>
               { avatar && !loading &&
-                <AvatarImg src={avatar} size={25}/>
+                <AvatarImg src={avatar} size={25} />
               }
             </div>
             { !saving && !loading && !noIcons && !isChild &&
@@ -95,7 +95,7 @@ class Message extends React.Component{
           </Sidebar>
 
         }
-        {this._renderContent()}
+        {this.renderContent()}
         { children === undefined &&
           <Sidebar>
             {
@@ -115,7 +115,7 @@ class Message extends React.Component{
         }
       </Wrapper>
     );
-  } 
+  }
 }
 
 Message.propTypes = {
