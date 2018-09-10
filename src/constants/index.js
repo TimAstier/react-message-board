@@ -6,6 +6,8 @@ export const MAX_MESSAGE_LENGTH = 240;
 **/
 export const API_BASE_URL = 'http://localhost:3004';
 
+export const GITHUB_LINK= 'https://github.com/TimAstier/react-message-board';
+
 // Avatar images from avatars.adorable.io
 export const USERS = {
   1: {

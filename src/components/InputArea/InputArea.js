@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as ChildComponents from './components';
+import { GITHUB_LINK } from '../../constants';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -12,14 +13,24 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
+const WelcomeMessage = styled.div`
+  font-family: Cambria;
+`;
+
+const GithubLink = () => (
+  <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">Github</a>
+);
+
 class InputArea extends React.Component {
   
   renderWelcomeMessage() {
     return (
-      <div>
-        <h1>Welcome to React Message Board!</h1>
+      <WelcomeMessage>
+        <h1>React Message Board</h1>
         <h2>&#8679; Chose an avatar to get started &#8679;</h2>
-      </div>
+        <p>See source on <GithubLink />.
+        </p>
+      </WelcomeMessage>
     );
   }
   
