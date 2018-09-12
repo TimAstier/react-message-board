@@ -2,40 +2,18 @@
 // This avoids having to change components if selectors implementation is changed
 // See https://egghead.io/lessons/javascript-redux-colocating-selectors-with-reducers
 
-import bindSelectors from '../helpers/bindSelectors';
+import createDuckSelectors from '../helpers/createDuckSelectors';
 
-// TODO: DRY this
+import * as app from '../redux/app';
+import * as auth from '../redux/auth';
+import * as messages from '../redux/messages';
+import * as inputArea from '../redux/inputArea';
 
-import * as fromApp from '../redux/app';
-import * as fromAuth from '../redux/auth';
-import * as fromMessages from '../redux/messages';
-import * as fromInputArea from '../redux/inputArea';
-
-const appSelectors = bindSelectors(
-  state => state.get('app'),
-  fromApp.selectors
-);
-
-const authSelectors = bindSelectors(
-  state => state.get('auth'),
-  fromAuth.selectors
-);
-
-const inputAreaSelectors = bindSelectors(
-  state => state.get('inputArea'),
-  fromInputArea.selectors
-);
-
-const messagesSelectors = bindSelectors(
-  state => state.get('messages'),
-  fromMessages.selectors
-);
-
-const duckSelectors = {
-  app: appSelectors,
-  auth: authSelectors,
-  inputArea: inputAreaSelectors,
-  messages: messagesSelectors,
+const ducks = {
+  app,
+  auth,
+  messages,
+  inputArea,
 };
 
-export default duckSelectors;
+export default createDuckSelectors(ducks);
